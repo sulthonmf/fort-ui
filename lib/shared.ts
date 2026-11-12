@@ -1,6 +1,11 @@
 import { createGetUrl } from 'fumadocs-core/source';
 
 export const appName = 'fort-ui';
+export const siteUrl = (
+  process.env.NEXT_PUBLIC_SITE_URL ?? 'https://fortui.my.id'
+).replace(/\/$/, '');
+export const siteDescription =
+  'Touch-first Cupertino-inspired copy-paste UI components for React, Tailwind CSS, Base UI, and Expo / React Native.';
 export const docsRoute = '/docs';
 export const docsImageRoute = '/og/docs';
 export const docsContentRoute = '/llms.mdx/docs';

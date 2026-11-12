@@ -11,7 +11,13 @@ import { notFound } from 'next/navigation';
 import { getMDXComponents } from '@/components/mdx';
 import type { Metadata } from 'next';
 import { createRelativeLink } from 'fumadocs-ui/mdx';
-import { getPageImageUrl, getPageMarkdownUrl, gitConfig } from '@/lib/shared';
+import {
+  appName,
+  getPageImageUrl,
+  getPageMarkdownUrl,
+  gitConfig,
+  siteDescription,
+} from '@/lib/shared';
 
 export default async function Page(props: PageProps<'/docs/[[...slug]]'>) {
   const params = await props.params;
@@ -55,11 +61,27 @@ export async function generateMetadata(props: PageProps<'/docs/[[...slug]]'>): P
   const page = source.getPage(params.slug);
   if (!page) notFound();
 
+  const description = page.data.description ?? siteDescription;
+  const imageUrl = getPageImageUrl(page).url;
+
   return {
     title: page.data.title,
-    description: page.data.description,
+    description,
+    alternates: {
+      canonical: page.url,
+    },
     openGraph: {
-      images: getPageImageUrl(page).url,
+      type: 'article',
+      url: page.url,
+      title: `${page.data.title} | ${appName}`,
+      description,
+      images: [imageUrl],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: `${page.data.title} | ${appName}`,
+      description,
+      images: [imageUrl],
     },
   };
 }

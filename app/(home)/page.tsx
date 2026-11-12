@@ -1,5 +1,29 @@
 import Link from 'next/link';
 import { HomePlayground } from '@/components/demos/home-playground';
+import { appName, gitConfig, siteDescription, siteUrl } from '@/lib/shared';
+
+const JSON_LD = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'WebSite',
+      name: appName,
+      alternateName: ['fort ui', 'fortui'],
+      url: siteUrl,
+      description: siteDescription,
+    },
+    {
+      '@type': 'SoftwareApplication',
+      name: appName,
+      alternateName: 'fort ui',
+      applicationCategory: 'DeveloperApplication',
+      operatingSystem: 'Web, React Native, Expo',
+      url: siteUrl,
+      description: siteDescription,
+      codeRepository: `https://github.com/${gitConfig.user}/${gitConfig.repo}`,
+    },
+  ],
+};
 
 const COMPONENT_LINKS = [
   { name: 'Button', href: '/docs/components/button' },
@@ -34,6 +58,12 @@ const COMPONENT_LINKS = [
 export default function HomePage() {
   return (
     <main className="mx-auto flex w-full max-w-6xl flex-1 flex-col justify-center px-5 py-12 sm:px-8 lg:py-16">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(JSON_LD).replace(/</g, '\\u003c'),
+        }}
+      />
       <div className="grid items-center gap-12 lg:grid-cols-[1.05fr_0.95fr] lg:gap-16">
         <div className="flex flex-col items-start">
           <h1 className="fort-ui text-4xl font-bold tracking-tight text-fd-foreground sm:text-5xl">

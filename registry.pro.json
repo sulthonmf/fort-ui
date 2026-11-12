@@ -1,7 +1,7 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry.json",
   "name": "fort-ui-pro",
-  "homepage": "http://localhost:3000",
+  "homepage": "https://fortui.my.id",
   "items": [
     {
       "name": "activity-pill",

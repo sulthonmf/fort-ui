@@ -5,7 +5,7 @@ import path from 'node:path';
 import { parseArgs } from 'node:util';
 
 const DEFAULT_REGISTRY =
-  process.env.FORT_UI_REGISTRY || 'http://localhost:3000';
+  process.env.FORT_UI_REGISTRY || 'https://fortui.my.id';
 
 const CSS_CANDIDATES = [
   'src/app/globals.css',

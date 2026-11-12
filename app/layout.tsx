@@ -4,7 +4,7 @@ import './global.css';
 
 export const metadata: Metadata = {
   metadataBase: new URL(
-    process.env.NEXT_PUBLIC_SITE_URL ?? 'http://localhost:3000',
+    process.env.NEXT_PUBLIC_SITE_URL ?? 'https://fortui.my.id',
   ),
   title: {
     default: 'fort-ui',

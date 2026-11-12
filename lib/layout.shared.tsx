@@ -1,13 +1,19 @@
 import type { BaseLayoutProps } from 'fumadocs-ui/layouts/shared';
 import { appName, gitConfig } from './shared';
 import { DonateButton } from '@/components/donate-button';
+import { FortLogo } from '@/components/fort-logo';
 
 export function baseOptions(): BaseLayoutProps {
   const hasGithub = Boolean(gitConfig.user && gitConfig.repo);
 
   return {
     nav: {
-      title: appName,
+      title: (
+        <span className="inline-flex items-center gap-2 font-semibold tracking-tight">
+          <FortLogo size={22} />
+          <span>{appName}</span>
+        </span>
+      ),
     },
     links: [
       {

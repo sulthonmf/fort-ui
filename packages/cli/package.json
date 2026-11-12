@@ -1,16 +1,28 @@
 {
   "name": "fort-ui",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "CLI for installing fort-ui touch-first components.",
   "homepage": "https://fortui.my.id",
   "license": "MIT",
+  "keywords": [
+    "react",
+    "nextjs",
+    "expo",
+    "react-native",
+    "tailwind",
+    "base-ui",
+    "ui",
+    "components",
+    "cli"
+  ],
   "type": "module",
   "bin": {
     "fort-ui": "./bin/fort-ui.mjs"
   },
   "files": [
     "bin",
-    "src"
+    "src",
+    "README.md"
   ],
   "scripts": {
     "test": "node --test test/cli.test.mjs"

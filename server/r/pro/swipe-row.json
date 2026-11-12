@@ -1,0 +1,24 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "swipe-row",
+  "title": "Swipe Row",
+  "description": "Pro swipeable list row with contextual actions and keyboard toggle.",
+  "dependencies": [
+    "lucide-react"
+  ],
+  "registryDependencies": [
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "registry/web/ui/swipe-row.tsx",
+      "content": "'use client';\n\nimport * as React from 'react';\nimport { MoreHorizontal } from 'lucide-react';\nimport { cn } from '@/lib/utils';\n\nexport interface SwipeRowAction {\n  label: string;\n  icon?: React.ReactNode;\n  variant?: 'default' | 'tinted' | 'destructive';\n  onAction: () => void;\n}\n\nexport interface SwipeRowProps {\n  children: React.ReactNode;\n  actions: SwipeRowAction[];\n  className?: string;\n}\n\nconst ACTION_VARIANTS: Record<NonNullable<SwipeRowAction['variant']>, string> = {\n  default: 'bg-[var(--fort-surface-muted)] text-[var(--fort-label)]',\n  tinted: 'bg-[var(--fort-tint)] text-white',\n  destructive: 'bg-[var(--fort-destructive)] text-white',\n};\n\n/**\n * Swipeable list row revealing contextual actions via drag or keyboard button.\n */\nexport function SwipeRow({ children, actions, className }: SwipeRowProps) {\n  const actionWidth = Math.min(actions.length * 76, 228);\n  const [offset, setOffset] = React.useState(0);\n  const [dragging, setDragging] = React.useState(false);\n  const startXRef = React.useRef<number | null>(null);\n  const startOffsetRef = React.useRef(0);\n\n  function handlePointerDown(event: React.PointerEvent<HTMLDivElement>) {\n    if ((event.target as HTMLElement).closest('button, a, input')) return;\n    startXRef.current = event.clientX;\n    startOffsetRef.current = offset;\n    setDragging(true);\n    event.currentTarget.setPointerCapture(event.pointerId);\n  }\n\n  function handlePointerMove(event: React.PointerEvent<HTMLDivElement>) {\n    if (!dragging || startXRef.current === null) return;\n    const delta = event.clientX - startXRef.current;\n    const raw = startOffsetRef.current + delta;\n    const clamped = Math.max(-actionWidth, Math.min(0, raw));\n    setOffset(clamped);\n  }\n\n  function handlePointerUp() {\n    if (!dragging) return;\n    setDragging(false);\n    startXRef.current = null;\n    setOffset(offset < -actionWidth / 2 ? -actionWidth : 0);\n  }\n\n  const isRevealed = offset < 0;\n\n  return (\n    <div\n      className={cn(\n        'fort-ui relative overflow-hidden rounded-[14px] border border-[var(--fort-separator)] bg-[var(--fort-surface)]',\n        className,\n      )}\n    >\n      <div\n        className=\"absolute inset-y-0 right-0 flex items-stretch\"\n        style={{ width: `${actionWidth}px` }}\n        aria-hidden={!isRevealed}\n      >\n        {actions.map((action) => (\n          <button\n            key={action.label}\n            type=\"button\"\n            tabIndex={isRevealed ? 0 : -1}\n            onClick={() => {\n              action.onAction();\n              setOffset(0);\n            }}\n            className={cn(\n              'flex flex-1 cursor-pointer flex-col items-center justify-center gap-1 px-2 text-[12px] font-semibold select-none',\n              'transition-opacity duration-150 hover:opacity-90 focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-white',\n              ACTION_VARIANTS[action.variant ?? 'default'],\n            )}\n          >\n            {action.icon}\n            <span>{action.label}</span>\n          </button>\n        ))}\n      </div>\n\n      <div\n        onPointerDown={handlePointerDown}\n        onPointerMove={handlePointerMove}\n        onPointerUp={handlePointerUp}\n        onPointerCancel={handlePointerUp}\n        style={{ transform: `translateX(${offset}px)` }}\n        className={cn(\n          'relative z-1 flex min-h-[56px] items-center justify-between gap-3 bg-[var(--fort-surface)] px-4 py-3 touch-pan-y',\n          !dragging &&\n            'transition-transform duration-250 ease-[var(--fort-ease)]',\n        )}\n      >\n        <div className=\"min-w-0 flex-1\">{children}</div>\n        <button\n          type=\"button\"\n          aria-expanded={isRevealed}\n          aria-label={isRevealed ? 'Hide row actions' : 'Show row actions'}\n          onClick={() => setOffset(isRevealed ? 0 : -actionWidth)}\n          className=\"flex size-8 shrink-0 cursor-pointer items-center justify-center rounded-full text-[var(--fort-label-secondary)] transition-colors hover:bg-[var(--fort-surface-muted)] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--fort-tint)]\"\n        >\n          <MoreHorizontal aria-hidden=\"true\" className=\"size-4\" />\n        </button>\n      </div>\n    </div>\n  );\n}\n\n",
+      "type": "registry:ui",
+      "target": "components/ui/swipe-row.tsx"
+    }
+  ],
+  "meta": {
+    "tier": "pro"
+  },
+  "type": "registry:ui"
+}

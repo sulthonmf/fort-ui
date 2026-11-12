@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "input",
+  "title": "Input (Native)",
+  "description": "Soft-filled native TextInput with focus tint border.",
+  "registryDependencies": [
+    "tokens"
+  ],
+  "files": [
+    {
+      "path": "registry/native/ui/input.tsx",
+      "content": "import * as React from 'react';\nimport {\n  StyleSheet,\n  TextInput,\n  type TextInputProps,\n} from 'react-native';\nimport { useFortTheme } from '@/lib/fort-tokens';\n\nexport type InputProps = TextInputProps;\n\n/**\n * Soft-filled native text input with subtle focus tint border.\n */\nexport function Input({\n  style,\n  placeholderTextColor,\n  onFocus,\n  onBlur,\n  ...props\n}: InputProps) {\n  const theme = useFortTheme();\n  const [focused, setFocused] = React.useState(false);\n\n  return (\n    <TextInput\n      placeholderTextColor={placeholderTextColor ?? theme.labelSecondary}\n      onFocus={(event) => {\n        setFocused(true);\n        onFocus?.(event);\n      }}\n      onBlur={(event) => {\n        setFocused(false);\n        onBlur?.(event);\n      }}\n      style={[\n        styles.base,\n        {\n          color: theme.label,\n          backgroundColor: focused ? theme.surface : theme.surfaceMuted,\n          borderColor: focused ? theme.tint : 'transparent',\n        },\n        style,\n      ]}\n      {...props}\n    />\n  );\n}\n\nconst styles = StyleSheet.create({\n  base: {\n    height: 44,\n    width: '100%',\n    borderRadius: 12,\n    borderWidth: 1.5,\n    paddingHorizontal: 14,\n    fontSize: 15,\n  },\n});\n",
+      "type": "registry:ui",
+      "target": "components/ui/input.tsx"
+    }
+  ],
+  "type": "registry:ui"
+}

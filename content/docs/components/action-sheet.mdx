@@ -1,0 +1,48 @@
+---
+title: Action Sheet
+description: Stacked bottom action menu with a separated cancel card.
+---
+
+<ComponentPreview
+  title="Action Menu"
+  code={`import { Button } from '@/components/ui/button';
+import {
+  ActionSheet,
+  ActionSheetCancel,
+  ActionSheetContent,
+  ActionSheetDescription,
+  ActionSheetGroup,
+  ActionSheetHeader,
+  ActionSheetItem,
+  ActionSheetTitle,
+  ActionSheetTrigger,
+} from '@/components/ui/action-sheet';
+
+export function Example() {
+  return (
+    <ActionSheet>
+      <ActionSheetTrigger render={<Button variant="gray">Photo Options</Button>} />
+      <ActionSheetContent>
+        <ActionSheetGroup>
+          <ActionSheetHeader>
+            <ActionSheetTitle>Manage Selected Item</ActionSheetTitle>
+            <ActionSheetDescription>Choose how to handle this file.</ActionSheetDescription>
+          </ActionSheetHeader>
+          <ActionSheetItem>Copy Link</ActionSheetItem>
+          <ActionSheetItem variant="destructive">Delete Item</ActionSheetItem>
+        </ActionSheetGroup>
+        <ActionSheetCancel />
+      </ActionSheetContent>
+    </ActionSheet>
+  );
+}`}
+>
+  <ActionSheetDemo />
+</ComponentPreview>
+
+## Installation
+
+```bash
+npx fort-ui add action-sheet
+```
+

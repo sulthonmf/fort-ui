@@ -1,0 +1,21 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "menu",
+  "title": "Menu",
+  "description": "Translucent context popup menu built on Base UI Menu.",
+  "dependencies": [
+    "@base-ui/react"
+  ],
+  "registryDependencies": [
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "registry/web/ui/menu.tsx",
+      "content": "'use client';\n\nimport * as React from 'react';\nimport { Menu as BaseMenu } from '@base-ui/react/menu';\nimport { cn } from '@/lib/utils';\n\nexport const Menu = BaseMenu.Root;\nexport const MenuTrigger = BaseMenu.Trigger;\nexport const MenuGroup = BaseMenu.Group;\n\nexport interface MenuContentProps\n  extends React.ComponentProps<typeof BaseMenu.Popup> {\n  sideOffset?: number;\n  align?: 'start' | 'center' | 'end';\n}\n\n/**\n * Translucent context popup menu built on Base UI Menu.\n */\nexport function MenuContent({\n  className,\n  sideOffset = 6,\n  align = 'end',\n  ...props\n}: MenuContentProps) {\n  return (\n    <BaseMenu.Portal>\n      <BaseMenu.Positioner sideOffset={sideOffset} align={align} className=\"z-50\">\n        <BaseMenu.Popup\n          className={cn(\n            'fort-ui min-w-[200px] overflow-hidden rounded-[14px] border border-[var(--fort-separator)] bg-[var(--fort-surface)]/95 p-1 shadow-xl backdrop-blur-xl',\n            'origin-[var(--transform-origin)] transition-[transform,opacity] duration-150 ease-[var(--fort-ease)]',\n            'data-[starting-style]:scale-95 data-[starting-style]:opacity-0',\n            'data-[ending-style]:scale-95 data-[ending-style]:opacity-0',\n            'focus-visible:outline-none',\n            className,\n          )}\n          {...props}\n        />\n      </BaseMenu.Positioner>\n    </BaseMenu.Portal>\n  );\n}\n\nexport interface MenuItemProps\n  extends React.ComponentProps<typeof BaseMenu.Item> {\n  destructive?: boolean;\n}\n\nexport function MenuItem({\n  className,\n  destructive = false,\n  ...props\n}: MenuItemProps) {\n  return (\n    <BaseMenu.Item\n      className={cn(\n        'flex min-h-[40px] cursor-pointer items-center justify-between gap-3 rounded-[10px] px-3 py-2 text-[14px] font-medium select-none',\n        'outline-none transition-colors duration-100',\n        'data-[highlighted]:bg-[var(--fort-surface-muted)]/80',\n        'data-[disabled]:pointer-events-none data-[disabled]:opacity-45',\n        destructive\n          ? 'text-[var(--fort-destructive-text)]'\n          : 'text-[var(--fort-label)]',\n        className,\n      )}\n      {...props}\n    />\n  );\n}\n\nexport function MenuGroupLabel({\n  className,\n  ...props\n}: React.ComponentProps<typeof BaseMenu.GroupLabel>) {\n  return (\n    <BaseMenu.GroupLabel\n      className={cn(\n        'px-3 py-1.5 text-[12px] font-semibold text-[var(--fort-label-secondary)]',\n        className,\n      )}\n      {...props}\n    />\n  );\n}\n\nexport function MenuSeparator({\n  className,\n  ...props\n}: React.ComponentProps<typeof BaseMenu.Separator>) {\n  return (\n    <BaseMenu.Separator\n      className={cn('my-1 h-px bg-[var(--fort-separator)]', className)}\n      {...props}\n    />\n  );\n}\n\n",
+      "type": "registry:ui",
+      "target": "components/ui/menu.tsx"
+    }
+  ],
+  "type": "registry:ui"
+}

@@ -1,0 +1,48 @@
+---
+title: Expo & React Native
+description: Touch-first semantic tokens and native components for Expo and React Native apps.
+---
+
+fort-ui automatically detects Expo and React Native projects via `package.json` and installs native components built with React Native `StyleSheet`, `Pressable`, and `useColorScheme()`.
+
+## Setup in Expo
+
+### 1. Initialize fort-ui
+
+From your Expo project root:
+
+```bash
+npx fort-ui init
+```
+
+This detects `"platform": "native"`, writes `fort-ui.json`, and copies semantic light/dark tokens into `lib/fort-tokens.ts`.
+
+### 2. Add Native Components
+
+```bash
+npx fort-ui add button switch grouped-list
+```
+
+To inspect all available native components:
+
+```bash
+npx fort-ui list --platform native
+```
+
+## Available Native Components
+
+- **Tokens (`lib/fort-tokens.ts`)**: `fortTokens` and `useFortTheme()` matching Web CSS variables (`bg`, `surface`, `surfaceMuted`, `separator`, `tint`, `destructive`, `hairline`).
+- **Button (`components/ui/button.tsx`)**: `Pressable`-based button with `filled`, `tinted`, `gray`, `plain`, `destructive`, and `destructive-tinted` variants plus press scale feedback.
+- **Badge (`components/ui/badge.tsx`)**: Pill and rounded status/counter badges.
+- **Switch (`components/ui/switch.tsx`)**: Native `Switch` pre-wired with fort-ui track colors.
+- **Input (`components/ui/input.tsx`)**: Soft-filled `TextInput` with focus tint border.
+- **Card (`components/ui/card.tsx`)**: Grouped surface container with `StyleSheet.hairlineWidth` borders.
+- **GroupedList (`components/ui/grouped-list.tsx`)**: Inset settings container with hairline row dividers and pressable items.
+- **SegmentedControl (`components/ui/segmented-control.tsx`)**: Animated sliding pill segmented tab switcher.
+- **Checkbox (`components/ui/checkbox.tsx`)**: Circular touch-first checkbox with indeterminate support and `hitSlop`.
+- **Progress & Spinner (`components/ui/progress.tsx`)**: Animated progress bar and native `ActivityIndicator` spinner.
+- **Avatar (`components/ui/avatar.tsx`)**: Circular avatar container with `AvatarImage` and automatic `AvatarFallback`.
+- **AlertDialog (`components/ui/alert-dialog.tsx`)**: Centered confirmation modal with stacked or split hairline action dividers.
+- **ActionSheet (`components/ui/action-sheet.tsx`)**: Stacked bottom modal action sheet with separated cancel card.
+- **Sheet (`components/ui/sheet.tsx`)**: Swipe-to-dismiss bottom modal sheet using `PanResponder`.
+- **TabBar (`components/ui/tab-bar.tsx`)**: Docked or floating bottom navigation bar with badge counters.

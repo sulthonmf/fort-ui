@@ -1,0 +1,22 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "radio-group",
+  "title": "Radio Group",
+  "description": "Single-choice radio group with circular and settings checkmark rows.",
+  "dependencies": [
+    "@base-ui/react",
+    "lucide-react"
+  ],
+  "registryDependencies": [
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "registry/web/ui/radio-group.tsx",
+      "content": "'use client';\n\nimport * as React from 'react';\nimport { RadioGroup as BaseRadioGroup } from '@base-ui/react/radio-group';\nimport { Radio as BaseRadio } from '@base-ui/react/radio';\nimport { Check } from 'lucide-react';\nimport { cn } from '@/lib/utils';\n\nexport type RadioGroupProps<Value = string> = React.ComponentProps<\n  typeof BaseRadioGroup<Value>\n>;\n\n/**\n * Accessible single-choice radio group built on Base UI RadioGroup.\n */\nexport function RadioGroup<Value = string>({\n  className,\n  ...props\n}: RadioGroupProps<Value>) {\n  return (\n    <BaseRadioGroup\n      className={cn('fort-ui flex flex-col gap-2.5', className)}\n      {...props}\n    />\n  );\n}\n\nexport interface RadioItemProps\n  extends React.ComponentProps<typeof BaseRadio.Root> {\n  label?: React.ReactNode;\n}\n\nexport function RadioItem({ className, label, ...props }: RadioItemProps) {\n  const control = (\n    <BaseRadio.Root\n      className={cn(\n        'flex size-[22px] shrink-0 cursor-pointer items-center justify-center rounded-full border-[1.5px]',\n        'border-[var(--fort-label-secondary)]/45 bg-transparent',\n        'data-[checked]:border-[var(--fort-tint)] data-[checked]:bg-[var(--fort-tint)]',\n        'transition-[background-color,border-color,transform] duration-150 ease-[var(--fort-ease)] active:scale-[0.92]',\n        'focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--fort-tint)]',\n        'data-[disabled]:cursor-not-allowed data-[disabled]:opacity-45',\n        !label && className,\n      )}\n      {...props}\n    >\n      <BaseRadio.Indicator className=\"size-2 rounded-full bg-white\" />\n    </BaseRadio.Root>\n  );\n\n  if (!label) {\n    return control;\n  }\n\n  return (\n    <label\n      className={cn(\n        'fort-ui inline-flex cursor-pointer items-center gap-2.5 text-[15px] text-[var(--fort-label)] select-none',\n        props.disabled && 'cursor-not-allowed opacity-55',\n        className,\n      )}\n    >\n      {control}\n      <span>{label}</span>\n    </label>\n  );\n}\n\nexport interface RadioListItemProps\n  extends Omit<React.ComponentProps<typeof BaseRadio.Root>, 'title'> {\n  title: React.ReactNode;\n  subtitle?: React.ReactNode;\n}\n\n/**\n * Checkmark-row variant inspired by mobile settings selection lists.\n */\nexport function RadioListItem({\n  title,\n  subtitle,\n  className,\n  ...props\n}: RadioListItemProps) {\n  return (\n    <label\n      className={cn(\n        'fort-ui flex min-h-[48px] w-full cursor-pointer items-center justify-between gap-3 px-4 py-2.5 select-none',\n        'transition-colors duration-150 hover:bg-[var(--fort-surface-muted)]/45 active:bg-[var(--fort-surface-muted)]',\n        props.disabled && 'pointer-events-none opacity-45',\n        className,\n      )}\n    >\n      <span className=\"min-w-0 flex-1\">\n        <span className=\"block truncate text-[15px] font-medium text-[var(--fort-label)]\">\n          {title}\n        </span>\n        {subtitle ? (\n          <span className=\"mt-0.5 block truncate text-[13px] text-[var(--fort-label-secondary)]\">\n            {subtitle}\n          </span>\n        ) : null}\n      </span>\n      <BaseRadio.Root\n        className=\"flex size-5 shrink-0 items-center justify-center rounded-full focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--fort-tint)]\"\n        {...props}\n      >\n        <BaseRadio.Indicator className=\"text-[var(--fort-tint-text)]\">\n          <Check aria-hidden=\"true\" className=\"size-4 stroke-[2.5]\" />\n        </BaseRadio.Indicator>\n      </BaseRadio.Root>\n    </label>\n  );\n}\n",
+      "type": "registry:ui",
+      "target": "components/ui/radio-group.tsx"
+    }
+  ],
+  "type": "registry:ui"
+}

@@ -1,0 +1,44 @@
+---
+title: Sheet
+description: Swipeable bottom sheet modal built on Base UI Drawer.
+---
+
+<ComponentPreview
+  title="Bottom Sheet"
+  code={`import { Button } from '@/components/ui/button';
+import {
+  Sheet,
+  SheetClose,
+  SheetContent,
+  SheetDescription,
+  SheetHeader,
+  SheetTitle,
+  SheetTrigger,
+} from '@/components/ui/sheet';
+
+export function Example() {
+  return (
+    <Sheet>
+      <SheetTrigger render={<Button variant="tinted">Open Sheet</Button>} />
+      <SheetContent>
+        <SheetHeader>
+          <SheetTitle>Quick Controls</SheetTitle>
+          <SheetDescription>
+            Drag down or press Escape to dismiss this sheet.
+          </SheetDescription>
+        </SheetHeader>
+        <SheetClose render={<Button fullWidth>Done</Button>} />
+      </SheetContent>
+    </Sheet>
+  );
+}`}
+>
+  <SheetDemo />
+</ComponentPreview>
+
+## Installation
+
+```bash
+npx fort-ui add sheet
+```
+

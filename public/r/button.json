@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "button",
+  "title": "Button",
+  "description": "Touch-first action button with filled, tinted, gray, plain, and destructive variants.",
+  "registryDependencies": [
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "registry/web/ui/button.tsx",
+      "content": "import * as React from 'react';\nimport { cn } from '@/lib/utils';\n\nexport type ButtonVariant =\n  | 'filled'\n  | 'tinted'\n  | 'gray'\n  | 'plain'\n  | 'destructive'\n  | 'destructive-tinted';\n\nexport type ButtonSize = 'sm' | 'md' | 'lg' | 'icon';\nexport type ButtonShape = 'rounded' | 'pill';\n\nconst VARIANT_CLASSES: Record<ButtonVariant, string> = {\n  filled:\n    'bg-[var(--fort-tint)] text-white hover:brightness-105 active:brightness-95',\n  tinted:\n    'bg-[var(--fort-tint-soft)] text-[var(--fort-tint-text)] hover:brightness-95',\n  gray:\n    'bg-[var(--fort-surface-muted)] text-[var(--fort-label)] hover:brightness-95',\n  plain:\n    'bg-transparent text-[var(--fort-tint-text)] hover:bg-[var(--fort-tint-soft)]/50',\n  destructive:\n    'bg-[var(--fort-destructive)] text-white hover:brightness-105 active:brightness-95',\n  'destructive-tinted':\n    'bg-[var(--fort-destructive-soft)] text-[var(--fort-destructive-text)] hover:brightness-95',\n};\n\nconst SIZE_CLASSES: Record<ButtonSize, string> = {\n  sm: 'h-9 px-3.5 text-[14px]',\n  md: 'h-11 px-4 text-[15px]',\n  lg: 'h-12 px-5 text-[16px]',\n  icon: 'h-11 w-11 p-0',\n};\n\nconst SHAPE_CLASSES: Record<ButtonSize, Record<ButtonShape, string>> = {\n  sm: { rounded: 'rounded-[10px]', pill: 'rounded-full' },\n  md: { rounded: 'rounded-[12px]', pill: 'rounded-full' },\n  lg: { rounded: 'rounded-[14px]', pill: 'rounded-full' },\n  icon: { rounded: 'rounded-[12px]', pill: 'rounded-full' },\n};\n\nexport interface ButtonProps extends React.ComponentProps<'button'> {\n  variant?: ButtonVariant;\n  size?: ButtonSize;\n  shape?: ButtonShape;\n  fullWidth?: boolean;\n}\n\n/**\n * Touch-first action button with tactile press feedback and accessible sizing.\n */\nexport function Button({\n  className,\n  variant = 'filled',\n  size = 'md',\n  shape = 'rounded',\n  fullWidth = false,\n  type = 'button',\n  ...props\n}: ButtonProps) {\n  return (\n    <button\n      type={type}\n      className={cn(\n        'fort-ui inline-flex shrink-0 cursor-pointer items-center justify-center gap-2 font-semibold select-none',\n        'transition-[transform,background-color,filter,opacity] duration-150 ease-[var(--fort-ease)]',\n        'active:scale-[0.97] disabled:pointer-events-none disabled:opacity-45',\n        'focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--fort-tint)]',\n        VARIANT_CLASSES[variant],\n        SIZE_CLASSES[size],\n        SHAPE_CLASSES[size][shape],\n        fullWidth && 'w-full',\n        className,\n      )}\n      {...props}\n    />\n  );\n}\n\n",
+      "type": "registry:ui",
+      "target": "components/ui/button.tsx"
+    }
+  ],
+  "type": "registry:ui"
+}

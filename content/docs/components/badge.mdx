@@ -1,0 +1,30 @@
+---
+title: Badge
+description: Compact status or counter pill using semantic theme colors.
+---
+
+<ComponentPreview
+  title="Status & Count Pills"
+  code={`import { Badge } from '@/components/ui/badge';
+
+export function Example() {
+  return (
+    <div className="flex flex-wrap gap-2.5">
+      <Badge variant="neutral">Draft</Badge>
+      <Badge variant="tinted">Synced</Badge>
+      <Badge variant="filled">3</Badge>
+      <Badge variant="success">Active</Badge>
+      <Badge variant="destructive">9+</Badge>
+    </div>
+  );
+}`}
+>
+  <BadgeDemo />
+</ComponentPreview>
+
+## Installation
+
+```bash
+npx fort-ui add badge
+```
+

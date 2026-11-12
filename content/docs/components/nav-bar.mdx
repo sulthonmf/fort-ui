@@ -1,0 +1,34 @@
+---
+title: Nav Bar
+description: Mobile-style top navigation bar with back action and large title.
+---
+
+<ComponentPreview
+  title="Navigation Bar"
+  code={`import { LargeTitle, NavBar, NavBarActions, NavBarBack, NavBarTitle } from '@/components/ui/nav-bar';
+import { Button } from '@/components/ui/button';
+
+export function Example() {
+  return (
+    <div className="overflow-hidden rounded-[20px] border border-[var(--fort-separator)]">
+      <NavBar>
+        <NavBarBack label="Albums" href="/docs" />
+        <NavBarTitle>Recents</NavBarTitle>
+        <NavBarActions>
+          <Button variant="plain" size="sm">Edit</Button>
+        </NavBarActions>
+      </NavBar>
+      <LargeTitle>Albums</LargeTitle>
+    </div>
+  );
+}`}
+>
+  <NavBarDemo />
+</ComponentPreview>
+
+## Installation
+
+```bash
+npx fort-ui add nav-bar
+```
+

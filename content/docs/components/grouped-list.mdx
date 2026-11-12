@@ -1,0 +1,32 @@
+---
+title: Grouped List
+description: Inset grouped settings container with hairline dividers and interactive rows.
+---
+
+<ComponentPreview
+  title="Settings Section"
+  code={`import { Palette } from 'lucide-react';
+import { GroupedList, GroupedListItem } from '@/components/ui/grouped-list';
+
+export function Example() {
+  return (
+    <GroupedList header="Preferences" footer="Updates take effect immediately.">
+      <GroupedListItem
+        leading={<Palette className="size-4" />}
+        title="Appearance"
+        trailing="Automatic"
+        chevron
+        href="#preferences"
+      />
+    </GroupedList>
+  );
+}`}
+>
+  <GroupedListDemo />
+</ComponentPreview>
+
+## Installation
+
+```bash
+npx fort-ui add grouped-list
+```

@@ -1,0 +1,33 @@
+---
+title: Radio Group
+description: Single-choice radio group with circular and settings checkmark rows.
+---
+
+<ComponentPreview
+  title="Checkmark List & Inline Radio"
+  code={`import { RadioGroup, RadioItem, RadioListItem } from '@/components/ui/radio-group';
+
+export function Example() {
+  return (
+    <div className="space-y-4">
+      <RadioGroup defaultValue="reflection" className="gap-0 divide-y divide-[var(--fort-separator)] rounded-[14px] border border-[var(--fort-separator)] bg-[var(--fort-surface)]">
+        <RadioListItem value="reflection" title="Reflection" subtitle="Default" />
+        <RadioListItem value="chimes" title="Chimes" />
+      </RadioGroup>
+      <RadioGroup defaultValue="wifi" className="flex-row gap-4">
+        <RadioItem value="wifi" label="Wi-Fi Only" />
+        <RadioItem value="any" label="Wi-Fi & Cellular" />
+      </RadioGroup>
+    </div>
+  );
+}`}
+>
+  <RadioGroupDemo />
+</ComponentPreview>
+
+## Installation
+
+```bash
+npx fort-ui add radio-group
+```
+

@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "switch",
+  "title": "Switch (Native)",
+  "description": "Native toggle switch pre-wired with fort-ui semantic track colors.",
+  "registryDependencies": [
+    "tokens"
+  ],
+  "files": [
+    {
+      "path": "registry/native/ui/switch.tsx",
+      "content": "import * as React from 'react';\nimport { Switch as RNSwitch, type SwitchProps as RNSwitchProps } from 'react-native';\nimport { useFortTheme } from '@/lib/fort-tokens';\n\nexport type SwitchProps = RNSwitchProps;\n\n/**\n * Native toggle switch pre-wired with fort-ui semantic track colors.\n */\nexport function Switch({ trackColor, thumbColor, ...props }: SwitchProps) {\n  const theme = useFortTheme();\n\n  return (\n    <RNSwitch\n      trackColor={\n        trackColor ?? {\n          false: theme.switchOff,\n          true: theme.switchOn,\n        }\n      }\n      thumbColor={thumbColor ?? '#ffffff'}\n      ios_backgroundColor={theme.switchOff}\n      {...props}\n    />\n  );\n}\n",
+      "type": "registry:ui",
+      "target": "components/ui/switch.tsx"
+    }
+  ],
+  "type": "registry:ui"
+}

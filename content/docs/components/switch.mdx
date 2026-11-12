@@ -1,0 +1,30 @@
+---
+title: Switch
+description: Accessible mobile-proportioned toggle switch built on Base UI.
+---
+
+<ComponentPreview
+  title="Settings Toggle"
+  code={`import { Switch } from '@/components/ui/switch';
+import { GroupedList, GroupedListItem } from '@/components/ui/grouped-list';
+
+export function Example() {
+  return (
+    <GroupedList>
+      <GroupedListItem
+        title="Wi-Fi"
+        trailing={<Switch aria-label="Wi-Fi" defaultChecked />}
+      />
+    </GroupedList>
+  );
+}`}
+>
+  <SwitchDemo />
+</ComponentPreview>
+
+## Installation
+
+```bash
+npx fort-ui add switch
+```
+

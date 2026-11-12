@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "tab-bar",
+  "title": "Tab Bar",
+  "description": "Mobile bottom tab bar with badge counters and floating mode.",
+  "registryDependencies": [
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "registry/web/ui/tab-bar.tsx",
+      "content": "import * as React from \"react\";\nimport { cn } from \"@/lib/utils\";\n\nexport interface TabBarProps extends React.ComponentProps<\"nav\"> {\n  floating?: boolean;\n}\n\n/**\n * Mobile bottom tab bar with translucent surface and hairline border.\n */\nexport function TabBar({\n  floating = false,\n  className,\n  children,\n  ...props\n}: TabBarProps) {\n  return (\n    <nav\n      aria-label={props[\"aria-label\"] ?? \"Primary navigation\"}\n      className={cn(\n        \"fort-ui flex w-full items-center justify-around bg-[var(--fort-surface)]/90 backdrop-blur-xl\",\n        floating\n          ? \"mx-auto max-w-md rounded-[22px] border border-[var(--fort-separator)] px-2 py-1.5 shadow-lg\"\n          : \"border-t border-[var(--fort-separator)] px-2 pt-1.5 pb-[max(0.5rem,env(safe-area-inset-bottom))]\",\n        className,\n      )}\n      {...props}\n    >\n      {children}\n    </nav>\n  );\n}\n\nexport interface TabBarItemProps {\n  icon: React.ReactNode;\n  label: string;\n  active?: boolean;\n  badge?: number | string;\n  href?: string;\n  onClick?: () => void;\n  className?: string;\n}\n\nexport function TabBarItem({\n  icon,\n  label,\n  active = false,\n  badge,\n  href,\n  onClick,\n  className,\n}: TabBarItemProps) {\n  const classes = cn(\n    \"relative flex min-h-[48px] min-w-[56px] flex-1 flex-col items-center justify-center gap-0.5 rounded-[14px] px-2 py-1 select-none\",\n    \"transition-[color,transform] duration-150 ease-[var(--fort-ease)] active:scale-[0.95]\",\n    \"focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--fort-tint)]\",\n    active\n      ? \"text-[var(--fort-tint-text)]\"\n      : \"text-[var(--fort-label-secondary)] hover:text-[var(--fort-label)]\",\n    className,\n  );\n\n  const content = (\n    <>\n      <span className=\"relative flex size-6 items-center justify-center\">\n        {icon}\n        {badge !== undefined && badge !== 0 ? (\n          <span className=\"absolute -top-1 -right-2.5 flex h-4 min-w-4 items-center justify-center rounded-full bg-[var(--fort-destructive)] px-1 text-[10px] font-bold text-white leading-none\">\n            {badge}\n          </span>\n        ) : null}\n      </span>\n      <span className=\"text-[11px] leading-tight font-medium\">{label}</span>\n    </>\n  );\n\n  if (href) {\n    return (\n      <a\n        href={href}\n        aria-current={active ? \"page\" : undefined}\n        className={classes}\n      >\n        {content}\n      </a>\n    );\n  }\n\n  return (\n    <button\n      type=\"button\"\n      onClick={onClick}\n      aria-pressed={active}\n      className={cn(classes, \"cursor-pointer\")}\n    >\n      {content}\n    </button>\n  );\n}\n",
+      "type": "registry:ui",
+      "target": "components/ui/tab-bar.tsx"
+    }
+  ],
+  "type": "registry:ui"
+}

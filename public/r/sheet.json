@@ -1,0 +1,21 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "sheet",
+  "title": "Sheet",
+  "description": "Swipeable bottom sheet modal built on Base UI Drawer.",
+  "dependencies": [
+    "@base-ui/react"
+  ],
+  "registryDependencies": [
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "registry/web/ui/sheet.tsx",
+      "content": "'use client';\n\nimport * as React from 'react';\nimport { Drawer as BaseDrawer } from '@base-ui/react/drawer';\nimport { cn } from '@/lib/utils';\n\nexport const Sheet = BaseDrawer.Root;\nexport const SheetTrigger = BaseDrawer.Trigger;\nexport const SheetClose = BaseDrawer.Close;\n\nexport interface SheetContentProps\n  extends React.ComponentProps<typeof BaseDrawer.Popup> {\n  showHandle?: boolean;\n}\n\n/**\n * Swipeable bottom sheet built on Base UI Drawer.\n */\nexport function SheetContent({\n  className,\n  children,\n  showHandle = true,\n  ...props\n}: SheetContentProps) {\n  return (\n    <BaseDrawer.Portal>\n      <BaseDrawer.Backdrop\n        className={cn(\n          'fixed inset-0 z-50 bg-black/35 backdrop-blur-[2px]',\n          'transition-opacity duration-300 ease-[var(--fort-ease)]',\n          'data-[starting-style]:opacity-0 data-[ending-style]:opacity-0',\n        )}\n      />\n      <BaseDrawer.Viewport className=\"fixed inset-0 z-50 flex items-end justify-center sm:p-4\">\n        <BaseDrawer.Popup\n          className={cn(\n            'fort-ui w-full max-w-md overflow-hidden rounded-t-[24px] border border-[var(--fort-separator)] bg-[var(--fort-surface)] shadow-2xl sm:rounded-[24px]',\n            'translate-y-[var(--drawer-swipe-movement-y)]',\n            'transition-transform duration-[calc(360ms*var(--drawer-swipe-strength,1))] ease-[var(--fort-ease)]',\n            'data-[starting-style]:translate-y-full data-[ending-style]:translate-y-full',\n            'data-[swiping]:transition-none data-[swiping]:select-none',\n            'focus-visible:outline-2 focus-visible:outline-[var(--fort-tint)]',\n            className,\n          )}\n          {...props}\n        >\n          {showHandle ? (\n            <div className=\"flex justify-center pt-2.5 pb-1\">\n              <span\n                aria-hidden=\"true\"\n                className=\"h-1.5 w-10 rounded-full bg-[var(--fort-surface-pressed)]\"\n              />\n            </div>\n          ) : null}\n          <BaseDrawer.Content className=\"max-h-[85dvh] overflow-y-auto px-5 pt-2 pb-6\">\n            {children}\n          </BaseDrawer.Content>\n        </BaseDrawer.Popup>\n      </BaseDrawer.Viewport>\n    </BaseDrawer.Portal>\n  );\n}\n\nexport function SheetHeader({\n  className,\n  ...props\n}: React.ComponentProps<'div'>) {\n  return (\n    <div className={cn('mb-4 space-y-1 text-left', className)} {...props} />\n  );\n}\n\nexport function SheetTitle({\n  className,\n  ...props\n}: React.ComponentProps<typeof BaseDrawer.Title>) {\n  return (\n    <BaseDrawer.Title\n      className={cn(\n        'text-[18px] leading-snug font-semibold text-[var(--fort-label)]',\n        className,\n      )}\n      {...props}\n    />\n  );\n}\n\nexport function SheetDescription({\n  className,\n  ...props\n}: React.ComponentProps<typeof BaseDrawer.Description>) {\n  return (\n    <BaseDrawer.Description\n      className={cn(\n        'text-[14px] leading-relaxed text-[var(--fort-label-secondary)]',\n        className,\n      )}\n      {...props}\n    />\n  );\n}\n\n",
+      "type": "registry:ui",
+      "target": "components/ui/sheet.tsx"
+    }
+  ],
+  "type": "registry:ui"
+}

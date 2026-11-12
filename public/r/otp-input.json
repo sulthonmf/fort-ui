@@ -1,0 +1,21 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "otp-input",
+  "title": "OTP Input",
+  "description": "Verification code input built on Base UI OTPField.",
+  "dependencies": [
+    "@base-ui/react"
+  ],
+  "registryDependencies": [
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "registry/web/ui/otp-input.tsx",
+      "content": "'use client';\n\nimport * as React from 'react';\nimport { OTPField as BaseOTPField } from '@base-ui/react/otp-field';\nimport { cn } from '@/lib/utils';\n\nexport interface OTPInputProps\n  extends Omit<React.ComponentProps<typeof BaseOTPField.Root>, 'children'> {\n  slotClassName?: string;\n}\n\n/**\n * Verification code input built on Base UI OTPField.\n */\nexport function OTPInput({\n  length = 6,\n  className,\n  slotClassName,\n  ...props\n}: OTPInputProps) {\n  return (\n    <BaseOTPField.Root\n      length={length}\n      className={cn('fort-ui inline-flex items-center gap-2', className)}\n      {...props}\n    >\n      {Array.from({ length }, (_, index) => (\n        <BaseOTPField.Input\n          key={index}\n          aria-label={`Digit ${index + 1}`}\n          className={cn(\n            'size-11 rounded-[12px] border border-[var(--fort-separator)] bg-[var(--fort-surface-muted)]/75 text-center text-[18px] font-semibold tabular-nums text-[var(--fort-label)]',\n            'transition-[background-color,border-color,transform] duration-150 ease-[var(--fort-ease)]',\n            'focus:border-[var(--fort-tint)] focus:bg-[var(--fort-surface)] focus:outline-none',\n            'data-[filled]:border-[var(--fort-tint)]/45 data-[filled]:bg-[var(--fort-surface)]',\n            'disabled:cursor-not-allowed disabled:opacity-45',\n            slotClassName,\n          )}\n        />\n      ))}\n    </BaseOTPField.Root>\n  );\n}\n\n",
+      "type": "registry:ui",
+      "target": "components/ui/otp-input.tsx"
+    }
+  ],
+  "type": "registry:ui"
+}

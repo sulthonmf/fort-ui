@@ -1,0 +1,20 @@
+{
+  "name": "fort-ui",
+  "version": "0.1.0",
+  "description": "CLI for installing fort-ui touch-first components.",
+  "type": "module",
+  "bin": {
+    "fort-ui": "./bin/fort-ui.mjs"
+  },
+  "files": [
+    "bin",
+    "src"
+  ],
+  "scripts": {
+    "test": "node --test test/cli.test.mjs"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}
+

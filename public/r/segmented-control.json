@@ -1,0 +1,21 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "segmented-control",
+  "title": "Segmented Control",
+  "description": "Segmented tab switcher with a smooth sliding indicator.",
+  "dependencies": [
+    "@base-ui/react"
+  ],
+  "registryDependencies": [
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "registry/web/ui/segmented-control.tsx",
+      "content": "'use client';\n\nimport * as React from 'react';\nimport { Tabs as BaseTabs } from '@base-ui/react/tabs';\nimport { cn } from '@/lib/utils';\n\nexport type SegmentedControlProps = React.ComponentProps<typeof BaseTabs.Root>;\n\n/**\n * Segmented control with a sliding active pill powered by Base UI Tabs.\n */\nexport function SegmentedControl({\n  className,\n  ...props\n}: SegmentedControlProps) {\n  return (\n    <BaseTabs.Root\n      className={cn('fort-ui flex flex-col gap-3', className)}\n      {...props}\n    />\n  );\n}\n\nexport interface SegmentedControlListProps\n  extends React.ComponentProps<typeof BaseTabs.List> {\n  fullWidth?: boolean;\n}\n\nexport function SegmentedControlList({\n  className,\n  children,\n  fullWidth = false,\n  ...props\n}: SegmentedControlListProps) {\n  return (\n    <BaseTabs.List\n      className={cn(\n        'relative inline-flex items-center rounded-[10px] bg-[var(--fort-surface-muted)] p-[3px]',\n        fullWidth && 'flex w-full',\n        className,\n      )}\n      {...props}\n    >\n      <BaseTabs.Indicator\n        renderBeforeHydration\n        className={cn(\n          'pointer-events-none absolute top-[var(--active-tab-top)] left-0 z-0',\n          'h-[var(--active-tab-height)] w-[var(--active-tab-width)] translate-x-[var(--active-tab-left)]',\n          'rounded-[7px] bg-[var(--fort-surface)]',\n          'shadow-[0_1px_2px_rgba(0,0,0,0.08),0_0_1px_rgba(0,0,0,0.06)]',\n          'transition-[transform,width] duration-200 ease-[var(--fort-ease)]',\n        )}\n      />\n      {children}\n    </BaseTabs.List>\n  );\n}\n\nexport type SegmentedControlTriggerProps = React.ComponentProps<\n  typeof BaseTabs.Tab\n>;\n\nexport function SegmentedControlTrigger({\n  className,\n  ...props\n}: SegmentedControlTriggerProps) {\n  return (\n    <BaseTabs.Tab\n      className={cn(\n        'relative z-1 flex-1 cursor-pointer rounded-[7px] px-3.5 py-1.5 text-center text-[13px] font-medium select-none',\n        'text-[var(--fort-label-secondary)] data-[active]:font-semibold data-[active]:text-[var(--fort-label)]',\n        'transition-colors duration-150',\n        'focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--fort-tint)]',\n        'data-[disabled]:pointer-events-none data-[disabled]:opacity-45',\n        className,\n      )}\n      {...props}\n    />\n  );\n}\n\nexport type SegmentedControlContentProps = React.ComponentProps<\n  typeof BaseTabs.Panel\n>;\n\nexport function SegmentedControlContent({\n  className,\n  ...props\n}: SegmentedControlContentProps) {\n  return (\n    <BaseTabs.Panel\n      className={cn(\n        'focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--fort-tint)]',\n        className,\n      )}\n      {...props}\n    />\n  );\n}\n\n",
+      "type": "registry:ui",
+      "target": "components/ui/segmented-control.tsx"
+    }
+  ],
+  "type": "registry:ui"
+}

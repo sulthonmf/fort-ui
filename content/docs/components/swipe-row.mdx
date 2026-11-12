@@ -1,0 +1,36 @@
+---
+title: Swipe Row
+description: Swipeable list row revealing contextual actions via drag or keyboard button.
+---
+
+<ProCallout title="Swipe Row (Pro)" />
+
+<ComponentPreview
+  title="Swipeable Mail Row"
+  code={`import { Archive, Pin } from 'lucide-react';
+import { SwipeRow } from '@/components/ui/swipe-row';
+
+export function Example() {
+  return (
+    <SwipeRow
+      actions={[
+        { label: 'Pin', icon: <Pin className="size-4" />, variant: 'tinted', onAction: () => console.log('Pinned') },
+        { label: 'Archive', icon: <Archive className="size-4" />, variant: 'destructive', onAction: () => console.log('Archived') },
+      ]}
+    >
+      <p className="font-medium">Design Review Notes</p>
+    </SwipeRow>
+  );
+}`}
+>
+  <SwipeRowDemo />
+</ComponentPreview>
+
+## Installation
+
+Authenticate once with your Pro license token, then install the component:
+
+```bash
+npx fort-ui auth <your-pro-token>
+npx fort-ui add swipe-row
+```

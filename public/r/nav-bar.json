@@ -1,0 +1,21 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "nav-bar",
+  "title": "Nav Bar",
+  "description": "Mobile-style top navigation bar with back action and large title.",
+  "dependencies": [
+    "lucide-react"
+  ],
+  "registryDependencies": [
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "registry/web/ui/nav-bar.tsx",
+      "content": "import * as React from 'react';\nimport { ChevronLeft } from 'lucide-react';\nimport { cn } from '@/lib/utils';\n\nexport interface NavBarProps extends React.ComponentProps<'header'> {\n  translucent?: boolean;\n  bordered?: boolean;\n}\n\n/**\n * Mobile-style top navigation bar with centered title and left/right slots.\n */\nexport function NavBar({\n  translucent = true,\n  bordered = true,\n  className,\n  children,\n  ...props\n}: NavBarProps) {\n  return (\n    <header\n      className={cn(\n        'fort-ui flex min-h-[52px] w-full items-center justify-between gap-2 px-3 py-2',\n        translucent\n          ? 'bg-[var(--fort-surface)]/85 backdrop-blur-xl'\n          : 'bg-[var(--fort-surface)]',\n        bordered && 'border-b border-[var(--fort-separator)]',\n        className,\n      )}\n      {...props}\n    >\n      {children}\n    </header>\n  );\n}\n\nexport interface NavBarBackProps {\n  label?: string;\n  href?: string;\n  onClick?: () => void;\n  className?: string;\n}\n\nexport function NavBarBack({\n  label = 'Back',\n  href,\n  onClick,\n  className,\n}: NavBarBackProps) {\n  const classes = cn(\n    'inline-flex min-h-[44px] items-center gap-0.5 rounded-[10px] pr-2 pl-1 text-[16px] font-medium text-[var(--fort-tint-text)]',\n    'transition-opacity duration-150 hover:opacity-80 active:opacity-60',\n    'focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--fort-tint)]',\n    className,\n  );\n\n  const inner = (\n    <>\n      <ChevronLeft aria-hidden=\"true\" className=\"size-5 shrink-0\" />\n      <span>{label}</span>\n    </>\n  );\n\n  if (href) {\n    return (\n      <a href={href} className={classes}>\n        {inner}\n      </a>\n    );\n  }\n\n  return (\n    <button type=\"button\" onClick={onClick} className={cn(classes, 'cursor-pointer')}>\n      {inner}\n    </button>\n  );\n}\n\nexport function NavBarTitle({\n  className,\n  ...props\n}: React.ComponentProps<'div'>) {\n  return (\n    <div\n      className={cn(\n        'min-w-0 flex-1 truncate text-center text-[17px] font-semibold text-[var(--fort-label)]',\n        className,\n      )}\n      {...props}\n    />\n  );\n}\n\nexport function NavBarActions({\n  className,\n  ...props\n}: React.ComponentProps<'div'>) {\n  return (\n    <div\n      className={cn('flex shrink-0 items-center justify-end gap-1', className)}\n      {...props}\n    />\n  );\n}\n\nexport function LargeTitle({\n  className,\n  ...props\n}: React.ComponentProps<'h1'>) {\n  return (\n    <h1\n      className={cn(\n        'fort-ui px-4 pt-2 pb-3 text-[32px] leading-tight font-bold tracking-tight text-[var(--fort-label)]',\n        className,\n      )}\n      {...props}\n    />\n  );\n}\n\n",
+      "type": "registry:ui",
+      "target": "components/ui/nav-bar.tsx"
+    }
+  ],
+  "type": "registry:ui"
+}

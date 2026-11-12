@@ -1,0 +1,38 @@
+---
+title: Segmented Control
+description: Segmented tab switcher with a smooth sliding indicator.
+---
+
+<ComponentPreview
+  title="Timeframe Switcher"
+  code={`import {
+  SegmentedControl,
+  SegmentedControlContent,
+  SegmentedControlList,
+  SegmentedControlTrigger,
+} from '@/components/ui/segmented-control';
+
+export function Example() {
+  return (
+    <SegmentedControl defaultValue="overview">
+      <SegmentedControlList fullWidth>
+        <SegmentedControlTrigger value="overview">Day</SegmentedControlTrigger>
+        <SegmentedControlTrigger value="week">Week</SegmentedControlTrigger>
+        <SegmentedControlTrigger value="month">Month</SegmentedControlTrigger>
+      </SegmentedControlList>
+      <SegmentedControlContent value="overview">
+        Today&apos;s schedule
+      </SegmentedControlContent>
+    </SegmentedControl>
+  );
+}`}
+>
+  <SegmentedControlDemo />
+</ComponentPreview>
+
+## Installation
+
+```bash
+npx fort-ui add segmented-control
+```
+

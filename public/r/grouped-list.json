@@ -1,0 +1,21 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "grouped-list",
+  "title": "Grouped List",
+  "description": "Inset grouped settings container with hairline dividers and interactive rows.",
+  "dependencies": [
+    "lucide-react"
+  ],
+  "registryDependencies": [
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "registry/web/ui/grouped-list.tsx",
+      "content": "import * as React from 'react';\nimport { ChevronRight } from 'lucide-react';\nimport { cn } from '@/lib/utils';\n\nexport interface GroupedListProps extends React.ComponentProps<'section'> {\n  header?: React.ReactNode;\n  footer?: React.ReactNode;\n}\n\n/**\n * Grouped settings-style container with hairline row dividers and subtle elevation.\n */\nexport function GroupedList({\n  header,\n  footer,\n  className,\n  children,\n  ...props\n}: GroupedListProps) {\n  return (\n    <section className={cn('fort-ui flex flex-col', className)} {...props}>\n      {header ? (\n        <div className=\"px-4 pb-1.5 text-[13px] font-medium text-[var(--fort-label-secondary)]\">\n          {header}\n        </div>\n      ) : null}\n      <div className=\"overflow-hidden rounded-[14px] border border-[var(--fort-separator)] bg-[var(--fort-surface)] divide-y divide-[var(--fort-separator)]\">\n        {children}\n      </div>\n      {footer ? (\n        <div className=\"px-4 pt-1.5 text-[12px] leading-relaxed text-[var(--fort-label-secondary)]\">\n          {footer}\n        </div>\n      ) : null}\n    </section>\n  );\n}\n\nexport interface GroupedListItemProps {\n  title: React.ReactNode;\n  subtitle?: React.ReactNode;\n  leading?: React.ReactNode;\n  trailing?: React.ReactNode;\n  chevron?: boolean;\n  destructive?: boolean;\n  disabled?: boolean;\n  href?: string;\n  onClick?: () => void;\n  className?: string;\n}\n\nexport function GroupedListItem({\n  title,\n  subtitle,\n  leading,\n  trailing,\n  chevron = false,\n  destructive = false,\n  disabled = false,\n  href,\n  onClick,\n  className,\n}: GroupedListItemProps) {\n  const rowClassName = cn(\n    'flex min-h-[48px] w-full items-center gap-3 px-4 py-2.5 text-left',\n    'transition-colors duration-150',\n    (onClick || href) &&\n      !disabled &&\n      'cursor-pointer hover:bg-[var(--fort-surface-muted)]/45 active:bg-[var(--fort-surface-muted)]',\n    'focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-[var(--fort-tint)]',\n    disabled && 'pointer-events-none opacity-45',\n    className,\n  );\n\n  const content = (\n    <>\n      {leading ? (\n        <span className=\"flex shrink-0 items-center justify-center text-[var(--fort-label-secondary)]\">\n          {leading}\n        </span>\n      ) : null}\n      <span className=\"min-w-0 flex-1\">\n        <span\n          className={cn(\n            'block truncate text-[15px] leading-snug font-medium',\n            destructive\n              ? 'text-[var(--fort-destructive-text)]'\n              : 'text-[var(--fort-label)]',\n          )}\n        >\n          {title}\n        </span>\n        {subtitle ? (\n          <span className=\"mt-0.5 block truncate text-[13px] leading-snug text-[var(--fort-label-secondary)]\">\n            {subtitle}\n          </span>\n        ) : null}\n      </span>\n      {trailing ? (\n        <span className=\"flex shrink-0 items-center gap-2 text-[14px] text-[var(--fort-label-secondary)]\">\n          {trailing}\n        </span>\n      ) : null}\n      {chevron ? (\n        <ChevronRight\n          aria-hidden=\"true\"\n          className=\"size-4 shrink-0 text-[var(--fort-label-secondary)]/70\"\n        />\n      ) : null}\n    </>\n  );\n\n  if (href) {\n    return (\n      <a href={href} className={rowClassName} aria-disabled={disabled || undefined}>\n        {content}\n      </a>\n    );\n  }\n\n  if (onClick) {\n    return (\n      <button\n        type=\"button\"\n        onClick={onClick}\n        disabled={disabled}\n        className={rowClassName}\n      >\n        {content}\n      </button>\n    );\n  }\n\n  return <div className={rowClassName}>{content}</div>;\n}\n\n",
+      "type": "registry:ui",
+      "target": "components/ui/grouped-list.tsx"
+    }
+  ],
+  "type": "registry:ui"
+}

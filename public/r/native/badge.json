@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "badge",
+  "title": "Badge (Native)",
+  "description": "Compact status or counter pill using fort-ui native theme tokens.",
+  "registryDependencies": [
+    "tokens"
+  ],
+  "files": [
+    {
+      "path": "registry/native/ui/badge.tsx",
+      "content": "import * as React from 'react';\nimport {\n  StyleSheet,\n  Text,\n  View,\n  type StyleProp,\n  type TextStyle,\n  type ViewProps,\n  type ViewStyle,\n} from 'react-native';\nimport { useFortTheme, type FortThemeColors } from '@/lib/fort-tokens';\n\nexport type BadgeVariant =\n  | 'neutral'\n  | 'tinted'\n  | 'filled'\n  | 'success'\n  | 'destructive';\n\nfunction getVariantColors(variant: BadgeVariant, theme: FortThemeColors) {\n  const map: Record<BadgeVariant, { bg: string; fg: string }> = {\n    neutral: { bg: theme.surfaceMuted, fg: theme.label },\n    tinted: { bg: theme.tintSoft, fg: theme.tintText },\n    filled: { bg: theme.tint, fg: '#ffffff' },\n    success: { bg: theme.switchOn, fg: '#ffffff' },\n    destructive: { bg: theme.destructive, fg: '#ffffff' },\n  };\n  return map[variant];\n}\n\nexport interface BadgeProps extends Omit<ViewProps, 'style'> {\n  children: React.ReactNode;\n  variant?: BadgeVariant;\n  shape?: 'pill' | 'rounded';\n  style?: StyleProp<ViewStyle>;\n  textStyle?: StyleProp<TextStyle>;\n}\n\n/**\n * Compact status or counter badge using fort-ui native theme tokens.\n */\nexport function Badge({\n  children,\n  variant = 'tinted',\n  shape = 'pill',\n  style,\n  textStyle,\n  ...props\n}: BadgeProps) {\n  const theme = useFortTheme();\n  const colors = getVariantColors(variant, theme);\n\n  return (\n    <View\n      style={[\n        styles.base,\n        {\n          backgroundColor: colors.bg,\n          borderRadius: shape === 'pill' ? 999 : 7,\n        },\n        style,\n      ]}\n      {...props}\n    >\n      <Text style={[styles.text, { color: colors.fg }, textStyle]}>\n        {children}\n      </Text>\n    </View>\n  );\n}\n\nconst styles = StyleSheet.create({\n  base: {\n    minWidth: 24,\n    height: 24,\n    paddingHorizontal: 8,\n    alignItems: 'center',\n    justifyContent: 'center',\n    alignSelf: 'flex-start',\n  },\n  text: {\n    fontSize: 12,\n    fontWeight: '600',\n  },\n});\n",
+      "type": "registry:ui",
+      "target": "components/ui/badge.tsx"
+    }
+  ],
+  "type": "registry:ui"
+}

@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "textarea",
+  "title": "Textarea",
+  "description": "Minimalist multi-line text field matching Input tokens.",
+  "registryDependencies": [
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "registry/web/ui/textarea.tsx",
+      "content": "import * as React from \"react\";\nimport { cn } from \"@/lib/utils\";\n\nexport type TextareaProps = React.ComponentProps<\"textarea\">;\n\n/**\n * Minimalist multi-line text field matching Input tokens.\n */\nexport function Textarea({ className, ...props }: TextareaProps) {\n  return (\n    <textarea\n      className={cn(\n        \"fort-ui flex min-h-[104px] w-full rounded-[14px] border border-transparent bg-[var(--fort-surface-muted)]/80 px-3.5 py-2.5 text-[15px] leading-relaxed text-[var(--fort-label)]\",\n        \"placeholder:text-[var(--fort-label-secondary)]\",\n        \"transition-[background-color,border-color] duration-150 ease-[var(--fort-ease)]\",\n        \"focus:border-[var(--fort-tint)] focus:bg-[var(--fort-surface)] focus:outline-none\",\n        \"disabled:cursor-not-allowed disabled:opacity-45\",\n        className,\n      )}\n      {...props}\n    />\n  );\n}\n",
+      "type": "registry:ui",
+      "target": "components/ui/textarea.tsx"
+    }
+  ],
+  "type": "registry:ui"
+}

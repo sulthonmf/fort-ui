@@ -1,0 +1,29 @@
+---
+title: Tab Bar
+description: Mobile bottom tab bar with badge counters and floating mode.
+---
+
+<ComponentPreview
+  title="Floating Tab Bar"
+  code={`import { Compass, Home, Settings } from 'lucide-react';
+import { TabBar, TabBarItem } from '@/components/ui/tab-bar';
+
+export function Example() {
+  return (
+    <TabBar floating>
+      <TabBarItem icon={<Home className="size-5" />} label="Home" active />
+      <TabBarItem icon={<Compass className="size-5" />} label="Explore" badge={2} />
+      <TabBarItem icon={<Settings className="size-5" />} label="Settings" />
+    </TabBar>
+  );
+}`}
+>
+  <TabBarDemo />
+</ComponentPreview>
+
+## Installation
+
+```bash
+npx fort-ui add tab-bar
+```
+

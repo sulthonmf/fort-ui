@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "badge",
+  "title": "Badge",
+  "description": "Compact status or counter pill using semantic theme colors.",
+  "registryDependencies": [
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "registry/web/ui/badge.tsx",
+      "content": "import * as React from 'react';\nimport { cn } from '@/lib/utils';\n\nexport type BadgeVariant =\n  | 'neutral'\n  | 'tinted'\n  | 'filled'\n  | 'success'\n  | 'destructive';\n\nconst VARIANT_CLASSES: Record<BadgeVariant, string> = {\n  neutral: 'bg-[var(--fort-surface-muted)] text-[var(--fort-label)]',\n  tinted: 'bg-[var(--fort-tint-soft)] text-[var(--fort-tint-text)]',\n  filled: 'bg-[var(--fort-tint)] text-white',\n  success: 'bg-[var(--fort-switch-on)] text-white',\n  destructive: 'bg-[var(--fort-destructive)] text-white',\n};\n\nexport interface BadgeProps extends React.ComponentProps<'span'> {\n  variant?: BadgeVariant;\n  shape?: 'pill' | 'rounded';\n}\n\n/**\n * Compact status or counter badge aligned with semantic theme colors.\n */\nexport function Badge({\n  className,\n  variant = 'tinted',\n  shape = 'pill',\n  ...props\n}: BadgeProps) {\n  return (\n    <span\n      className={cn(\n        'fort-ui inline-flex h-6 min-w-6 items-center justify-center px-2 text-[12px] font-semibold leading-none',\n        shape === 'pill' ? 'rounded-full' : 'rounded-[7px]',\n        VARIANT_CLASSES[variant],\n        className,\n      )}\n      {...props}\n    />\n  );\n}\n\n",
+      "type": "registry:ui",
+      "target": "components/ui/badge.tsx"
+    }
+  ],
+  "type": "registry:ui"
+}

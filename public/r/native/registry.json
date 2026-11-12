@@ -1,0 +1,216 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry.json",
+  "name": "fort-ui-native",
+  "homepage": "http://localhost:3000",
+  "items": [
+    {
+      "name": "tokens",
+      "type": "registry:lib",
+      "title": "Native Tokens",
+      "description": "Light and dark semantic theme tokens using React Native StyleSheet and useColorScheme.",
+      "files": [
+        {
+          "path": "registry/native/lib/tokens.ts",
+          "type": "registry:lib",
+          "target": "lib/fort-tokens.ts"
+        }
+      ]
+    },
+    {
+      "name": "button",
+      "type": "registry:ui",
+      "title": "Button (Native)",
+      "description": "Touch-first Pressable action button with tactile feedback and semantic tokens.",
+      "registryDependencies": ["tokens"],
+      "files": [
+        {
+          "path": "registry/native/ui/button.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/button.tsx"
+        }
+      ]
+    },
+    {
+      "name": "badge",
+      "type": "registry:ui",
+      "title": "Badge (Native)",
+      "description": "Compact status or counter pill using fort-ui native theme tokens.",
+      "registryDependencies": ["tokens"],
+      "files": [
+        {
+          "path": "registry/native/ui/badge.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/badge.tsx"
+        }
+      ]
+    },
+    {
+      "name": "switch",
+      "type": "registry:ui",
+      "title": "Switch (Native)",
+      "description": "Native toggle switch pre-wired with fort-ui semantic track colors.",
+      "registryDependencies": ["tokens"],
+      "files": [
+        {
+          "path": "registry/native/ui/switch.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/switch.tsx"
+        }
+      ]
+    },
+    {
+      "name": "input",
+      "type": "registry:ui",
+      "title": "Input (Native)",
+      "description": "Soft-filled native TextInput with focus tint border.",
+      "registryDependencies": ["tokens"],
+      "files": [
+        {
+          "path": "registry/native/ui/input.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/input.tsx"
+        }
+      ]
+    },
+    {
+      "name": "card",
+      "type": "registry:ui",
+      "title": "Card (Native)",
+      "description": "Grouped surface container with hairline borders for React Native.",
+      "registryDependencies": ["tokens"],
+      "files": [
+        {
+          "path": "registry/native/ui/card.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/card.tsx"
+        }
+      ]
+    },
+    {
+      "name": "grouped-list",
+      "type": "registry:ui",
+      "title": "Grouped List (Native)",
+      "description": "Inset settings container with hairline row dividers and Pressable rows.",
+      "registryDependencies": ["tokens"],
+      "files": [
+        {
+          "path": "registry/native/ui/grouped-list.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/grouped-list.tsx"
+        }
+      ]
+    },
+    {
+      "name": "segmented-control",
+      "type": "registry:ui",
+      "title": "Segmented Control (Native)",
+      "description": "Animated pill segmented control using React Native Animated and Layout events.",
+      "registryDependencies": ["tokens"],
+      "files": [
+        {
+          "path": "registry/native/ui/segmented-control.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/segmented-control.tsx"
+        }
+      ]
+    },
+    {
+      "name": "checkbox",
+      "type": "registry:ui",
+      "title": "Checkbox (Native)",
+      "description": "Circular touch-first checkmark toggle with generous hitSlop.",
+      "registryDependencies": ["tokens"],
+      "files": [
+        {
+          "path": "registry/native/ui/checkbox.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/checkbox.tsx"
+        }
+      ]
+    },
+    {
+      "name": "progress",
+      "type": "registry:ui",
+      "title": "Progress & Spinner (Native)",
+      "description": "Animated linear progress indicator and native ActivityIndicator spinner.",
+      "registryDependencies": ["tokens"],
+      "files": [
+        {
+          "path": "registry/native/ui/progress.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/progress.tsx"
+        }
+      ]
+    },
+    {
+      "name": "avatar",
+      "type": "registry:ui",
+      "title": "Avatar (Native)",
+      "description": "Circular avatar container with automatic image error fallback.",
+      "registryDependencies": ["tokens"],
+      "files": [
+        {
+          "path": "registry/native/ui/avatar.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/avatar.tsx"
+        }
+      ]
+    },
+    {
+      "name": "alert-dialog",
+      "type": "registry:ui",
+      "title": "Alert Dialog (Native)",
+      "description": "Centered modal confirmation dialog with hairline action dividers.",
+      "registryDependencies": ["tokens"],
+      "files": [
+        {
+          "path": "registry/native/ui/alert-dialog.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/alert-dialog.tsx"
+        }
+      ]
+    },
+    {
+      "name": "action-sheet",
+      "type": "registry:ui",
+      "title": "Action Sheet (Native)",
+      "description": "Stacked bottom modal action list with a separated cancel card.",
+      "registryDependencies": ["tokens"],
+      "files": [
+        {
+          "path": "registry/native/ui/action-sheet.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/action-sheet.tsx"
+        }
+      ]
+    },
+    {
+      "name": "sheet",
+      "type": "registry:ui",
+      "title": "Sheet (Native)",
+      "description": "Swipe-to-dismiss bottom sheet modal using PanResponder and Animated.",
+      "registryDependencies": ["tokens"],
+      "files": [
+        {
+          "path": "registry/native/ui/sheet.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/sheet.tsx"
+        }
+      ]
+    },
+    {
+      "name": "tab-bar",
+      "type": "registry:ui",
+      "title": "Tab Bar (Native)",
+      "description": "Docked or floating mobile bottom tab bar with notification badge counters.",
+      "registryDependencies": ["tokens"],
+      "files": [
+        {
+          "path": "registry/native/ui/tab-bar.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/tab-bar.tsx"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,39 @@
+---
+title: Toast
+description: Floating notification banner powered by Base UI Toast.
+---
+
+<ComponentPreview
+  title="Banner Notification"
+  code={`import { Button } from '@/components/ui/button';
+import { ToastProvider, useToast } from '@/components/ui/toast';
+
+function Trigger() {
+  const toast = useToast();
+  return (
+    <Button
+      variant="tinted"
+      onClick={() => toast.add({ title: 'Changes Synced', description: 'Updated successfully.' })}
+    >
+      Show Toast
+    </Button>
+  );
+}
+
+export function Example() {
+  return (
+    <ToastProvider position="top">
+      <Trigger />
+    </ToastProvider>
+  );
+}`}
+>
+  <ToastDemo />
+</ComponentPreview>
+
+## Installation
+
+```bash
+npx fort-ui add toast
+```
+

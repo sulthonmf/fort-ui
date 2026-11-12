@@ -1,0 +1,21 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "popover",
+  "title": "Popover",
+  "description": "Floating popover card built on Base UI Popover.",
+  "dependencies": [
+    "@base-ui/react"
+  ],
+  "registryDependencies": [
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "registry/web/ui/popover.tsx",
+      "content": "'use client';\n\nimport * as React from 'react';\nimport { Popover as BasePopover } from '@base-ui/react/popover';\nimport { cn } from '@/lib/utils';\n\nexport const Popover = BasePopover.Root;\nexport const PopoverTrigger = BasePopover.Trigger;\nexport const PopoverClose = BasePopover.Close;\n\nexport interface PopoverContentProps\n  extends React.ComponentProps<typeof BasePopover.Popup> {\n  sideOffset?: number;\n  align?: 'start' | 'center' | 'end';\n}\n\n/**\n * Floating popover card built on Base UI Popover.\n */\nexport function PopoverContent({\n  className,\n  sideOffset = 8,\n  align = 'center',\n  ...props\n}: PopoverContentProps) {\n  return (\n    <BasePopover.Portal>\n      <BasePopover.Positioner sideOffset={sideOffset} align={align} className=\"z-50\">\n        <BasePopover.Popup\n          className={cn(\n            'fort-ui w-72 rounded-[16px] border border-[var(--fort-separator)] bg-[var(--fort-surface)]/95 p-4 shadow-xl backdrop-blur-xl',\n            'origin-[var(--transform-origin)] transition-[transform,opacity] duration-150 ease-[var(--fort-ease)]',\n            'data-[starting-style]:scale-95 data-[starting-style]:opacity-0',\n            'data-[ending-style]:scale-95 data-[ending-style]:opacity-0',\n            'focus-visible:outline-2 focus-visible:outline-[var(--fort-tint)]',\n            className,\n          )}\n          {...props}\n        />\n      </BasePopover.Positioner>\n    </BasePopover.Portal>\n  );\n}\n\nexport function PopoverTitle({\n  className,\n  ...props\n}: React.ComponentProps<typeof BasePopover.Title>) {\n  return (\n    <BasePopover.Title\n      className={cn('text-[15px] font-semibold text-[var(--fort-label)]', className)}\n      {...props}\n    />\n  );\n}\n\nexport function PopoverDescription({\n  className,\n  ...props\n}: React.ComponentProps<typeof BasePopover.Description>) {\n  return (\n    <BasePopover.Description\n      className={cn(\n        'mt-1 text-[13px] leading-relaxed text-[var(--fort-label-secondary)]',\n        className,\n      )}\n      {...props}\n    />\n  );\n}\n\n",
+      "type": "registry:ui",
+      "target": "components/ui/popover.tsx"
+    }
+  ],
+  "type": "registry:ui"
+}

@@ -1,0 +1,28 @@
+---
+title: Avatar
+description: Circular user avatar with fallback initials.
+---
+
+<ComponentPreview
+  title="Sizes & Initials"
+  code={`import { Avatar, AvatarFallback } from '@/components/ui/avatar';
+
+export function Example() {
+  return (
+    <div className="flex items-center gap-3">
+      <Avatar size="sm"><AvatarFallback>SF</AvatarFallback></Avatar>
+      <Avatar size="md"><AvatarFallback>AL</AvatarFallback></Avatar>
+      <Avatar size="lg"><AvatarFallback>UI</AvatarFallback></Avatar>
+    </div>
+  );
+}`}
+>
+  <AvatarDemo />
+</ComponentPreview>
+
+## Installation
+
+```bash
+npx fort-ui add avatar
+```
+

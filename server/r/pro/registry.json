@@ -1,0 +1,42 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry.json",
+  "name": "fort-ui-pro",
+  "homepage": "http://localhost:3000",
+  "items": [
+    {
+      "name": "activity-pill",
+      "type": "registry:ui",
+      "title": "Activity Pill",
+      "description": "Pro morphing status pill transitioning smoothly between compact and expanded views.",
+      "registryDependencies": ["utils"],
+      "meta": {
+        "tier": "pro"
+      },
+      "files": [
+        {
+          "path": "registry/web/ui/activity-pill.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/activity-pill.tsx"
+        }
+      ]
+    },
+    {
+      "name": "swipe-row",
+      "type": "registry:ui",
+      "title": "Swipe Row",
+      "description": "Pro swipeable list row with contextual actions and keyboard toggle.",
+      "dependencies": ["lucide-react"],
+      "registryDependencies": ["utils"],
+      "meta": {
+        "tier": "pro"
+      },
+      "files": [
+        {
+          "path": "registry/web/ui/swipe-row.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/swipe-row.tsx"
+        }
+      ]
+    }
+  ]
+}

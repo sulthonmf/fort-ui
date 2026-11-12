@@ -1,0 +1,51 @@
+---
+title: Alert Dialog
+description: Centered confirmation dialog with stacked or split hairline actions.
+---
+
+<ComponentPreview
+  title="Confirmation Prompt"
+  code={`import { Button } from '@/components/ui/button';
+import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+  AlertDialogTrigger,
+} from '@/components/ui/alert-dialog';
+
+export function Example() {
+  return (
+    <AlertDialog>
+      <AlertDialogTrigger
+        render={<Button variant="destructive-tinted">Discard Draft</Button>}
+      />
+      <AlertDialogContent>
+        <AlertDialogHeader>
+          <AlertDialogTitle>Discard Draft?</AlertDialogTitle>
+          <AlertDialogDescription>
+            This removes your unsaved changes from this session.
+          </AlertDialogDescription>
+        </AlertDialogHeader>
+        <AlertDialogFooter>
+          <AlertDialogCancel>Keep Editing</AlertDialogCancel>
+          <AlertDialogAction variant="destructive">Discard</AlertDialogAction>
+        </AlertDialogFooter>
+      </AlertDialogContent>
+    </AlertDialog>
+  );
+}`}
+>
+  <AlertDialogDemo />
+</ComponentPreview>
+
+## Installation
+
+```bash
+npx fort-ui add alert-dialog
+```
+

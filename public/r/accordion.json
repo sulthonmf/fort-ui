@@ -1,0 +1,22 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "accordion",
+  "title": "Accordion",
+  "description": "Collapsible grouped disclosure list built on Base UI Accordion.",
+  "dependencies": [
+    "@base-ui/react",
+    "lucide-react"
+  ],
+  "registryDependencies": [
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "registry/web/ui/accordion.tsx",
+      "content": "'use client';\n\nimport * as React from 'react';\nimport { Accordion as BaseAccordion } from '@base-ui/react/accordion';\nimport { ChevronDown } from 'lucide-react';\nimport { cn } from '@/lib/utils';\n\n/**\n * Collapsible grouped disclosure list built on Base UI Accordion.\n */\nexport function Accordion({\n  className,\n  ...props\n}: React.ComponentProps<typeof BaseAccordion.Root>) {\n  return (\n    <BaseAccordion.Root\n      className={cn(\n        'fort-ui overflow-hidden rounded-[14px] border border-[var(--fort-separator)] bg-[var(--fort-surface)] divide-y divide-[var(--fort-separator)]',\n        className,\n      )}\n      {...props}\n    />\n  );\n}\n\nexport function AccordionItem({\n  className,\n  ...props\n}: React.ComponentProps<typeof BaseAccordion.Item>) {\n  return <BaseAccordion.Item className={cn(className)} {...props} />;\n}\n\nexport function AccordionTrigger({\n  className,\n  children,\n  ...props\n}: React.ComponentProps<typeof BaseAccordion.Trigger>) {\n  return (\n    <BaseAccordion.Header>\n      <BaseAccordion.Trigger\n        className={cn(\n          'group flex min-h-[48px] w-full cursor-pointer items-center justify-between gap-3 px-4 py-3 text-left text-[15px] font-medium text-[var(--fort-label)]',\n          'transition-colors duration-150 hover:bg-[var(--fort-surface-muted)]/45 active:bg-[var(--fort-surface-muted)]',\n          'focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-[var(--fort-tint)]',\n          className,\n        )}\n        {...props}\n      >\n        <span className=\"min-w-0 flex-1\">{children}</span>\n        <ChevronDown\n          aria-hidden=\"true\"\n          className=\"size-4 shrink-0 text-[var(--fort-label-secondary)] transition-transform duration-200 ease-[var(--fort-ease)] group-data-[panel-open]:rotate-180\"\n        />\n      </BaseAccordion.Trigger>\n    </BaseAccordion.Header>\n  );\n}\n\nexport function AccordionContent({\n  className,\n  children,\n  ...props\n}: React.ComponentProps<typeof BaseAccordion.Panel>) {\n  return (\n    <BaseAccordion.Panel\n      className={cn(\n        'h-[var(--accordion-panel-height)] overflow-hidden transition-[height] duration-200 ease-[var(--fort-ease)]',\n        'data-[starting-style]:h-0 data-[ending-style]:h-0',\n      )}\n      {...props}\n    >\n      <div\n        className={cn(\n          'px-4 pt-0 pb-3.5 text-[14px] leading-relaxed text-[var(--fort-label-secondary)]',\n          className,\n        )}\n      >\n        {children}\n      </div>\n    </BaseAccordion.Panel>\n  );\n}\n\n",
+      "type": "registry:ui",
+      "target": "components/ui/accordion.tsx"
+    }
+  ],
+  "type": "registry:ui"
+}

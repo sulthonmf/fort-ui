@@ -1,0 +1,39 @@
+---
+title: Popover
+description: Floating popover card built on Base UI Popover.
+---
+
+<ComponentPreview
+  title="Floating Popover"
+  code={`import { Button } from '@/components/ui/button';
+import {
+  Popover,
+  PopoverClose,
+  PopoverContent,
+  PopoverDescription,
+  PopoverTitle,
+  PopoverTrigger,
+} from '@/components/ui/popover';
+
+export function Example() {
+  return (
+    <Popover>
+      <PopoverTrigger render={<Button variant="tinted">Sync Info</Button>} />
+      <PopoverContent>
+        <PopoverTitle>Automatic Sync</PopoverTitle>
+        <PopoverDescription>Components stay local in your repo.</PopoverDescription>
+        <PopoverClose render={<Button size="sm">Close</Button>} />
+      </PopoverContent>
+    </Popover>
+  );
+}`}
+>
+  <PopoverDemo />
+</ComponentPreview>
+
+## Installation
+
+```bash
+npx fort-ui add popover
+```
+

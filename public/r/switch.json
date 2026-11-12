@@ -1,0 +1,21 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "switch",
+  "title": "Switch",
+  "description": "Accessible mobile-proportioned toggle switch built on Base UI.",
+  "dependencies": [
+    "@base-ui/react"
+  ],
+  "registryDependencies": [
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "registry/web/ui/switch.tsx",
+      "content": "\"use client\";\n\nimport * as React from \"react\";\nimport { Switch as BaseSwitch } from \"@base-ui/react/switch\";\nimport { cn } from \"@/lib/utils\";\n\nexport type SwitchSize = \"sm\" | \"md\";\n\nconst TRACK_SIZE: Record<SwitchSize, string> = {\n  sm: \"h-6 w-10 p-0.5\",\n  md: \"h-[31px] w-[51px] p-0.5\",\n};\n\nconst THUMB_SIZE: Record<SwitchSize, string> = {\n  sm: \"size-5 data-[checked]:translate-x-4\",\n  md: \"size-[27px] data-[checked]:translate-x-5\",\n};\n\nexport interface SwitchProps extends React.ComponentProps<\n  typeof BaseSwitch.Root\n> {\n  size?: SwitchSize;\n}\n\n/**\n * Accessible mobile-proportioned toggle switch built on Base UI.\n */\nexport function Switch({ className, size = \"md\", ...props }: SwitchProps) {\n  return (\n    <BaseSwitch.Root\n      className={cn(\n        \"group relative inline-flex shrink-0 cursor-pointer items-center rounded-full\",\n        \"bg-[var(--fort-switch-off)] data-[checked]:bg-[var(--fort-switch-on)]\",\n        \"transition-colors duration-200 ease-[var(--fort-ease)]\",\n        \"focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--fort-tint)]\",\n        \"data-[disabled]:cursor-not-allowed data-[disabled]:opacity-45\",\n        TRACK_SIZE[size],\n        className,\n      )}\n      {...props}\n    >\n      <BaseSwitch.Thumb\n        className={cn(\n          \"pointer-events-none block rounded-full bg-white shadow-[0_2px_4px_rgba(0,0,0,0.18),0_0_1px_rgba(0,0,0,0.1)]\",\n          \"transition-transform duration-200 ease-[var(--fort-ease)] group-active:scale-[0.96]\",\n          THUMB_SIZE[size],\n        )}\n      />\n    </BaseSwitch.Root>\n  );\n}\n",
+      "type": "registry:ui",
+      "target": "components/ui/switch.tsx"
+    }
+  ],
+  "type": "registry:ui"
+}

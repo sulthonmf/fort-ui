@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "skeleton",
+  "title": "Skeleton",
+  "description": "Restrained loading placeholder matching fort-ui surface tokens.",
+  "registryDependencies": [
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "registry/web/ui/skeleton.tsx",
+      "content": "import * as React from 'react';\nimport { cn } from '@/lib/utils';\n\n/**\n * Restrained loading placeholder matching fort-ui surface tokens.\n */\nexport function Skeleton({\n  className,\n  ...props\n}: React.ComponentProps<'div'>) {\n  return (\n    <div\n      aria-hidden=\"true\"\n      className={cn(\n        'animate-pulse rounded-[10px] bg-[var(--fort-surface-muted)]',\n        className,\n      )}\n      {...props}\n    />\n  );\n}\n\n",
+      "type": "registry:ui",
+      "target": "components/ui/skeleton.tsx"
+    }
+  ],
+  "type": "registry:ui"
+}

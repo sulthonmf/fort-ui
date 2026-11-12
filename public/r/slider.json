@@ -1,0 +1,21 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "slider",
+  "title": "Slider",
+  "description": "Touch-proportioned range slider built on Base UI Slider.",
+  "dependencies": [
+    "@base-ui/react"
+  ],
+  "registryDependencies": [
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "registry/web/ui/slider.tsx",
+      "content": "'use client';\n\nimport * as React from 'react';\nimport { Slider as BaseSlider } from '@base-ui/react/slider';\nimport { cn } from '@/lib/utils';\n\nexport type SliderProps<\n  Value extends number | readonly number[] = number | readonly number[],\n> = React.ComponentProps<typeof BaseSlider.Root<Value>> & {\n  thumbLabel?: string;\n};\n\n/**\n * Touch-proportioned range slider built on Base UI Slider.\n */\nexport function Slider<\n  Value extends number | readonly number[] = number | readonly number[],\n>({\n  className,\n  value,\n  defaultValue,\n  thumbLabel,\n  ...props\n}: SliderProps<Value>) {\n  const thumbSource = value ?? defaultValue;\n  const thumbCount = Array.isArray(thumbSource) ? thumbSource.length : 1;\n\n  return (\n    <BaseSlider.Root\n      value={value}\n      defaultValue={defaultValue}\n      className={cn(\n        'fort-ui relative flex w-full touch-none items-center select-none',\n        'data-[disabled]:cursor-not-allowed data-[disabled]:opacity-45',\n        className,\n      )}\n      {...props}\n    >\n      <BaseSlider.Control className=\"flex w-full cursor-pointer items-center py-3\">\n        <BaseSlider.Track className=\"relative h-1 w-full overflow-visible rounded-full bg-[var(--fort-surface-muted)]\">\n          <BaseSlider.Indicator className=\"rounded-full bg-[var(--fort-tint)]\" />\n          {Array.from({ length: thumbCount }, (_, index) => (\n            <BaseSlider.Thumb\n              key={index}\n              index={thumbCount > 1 ? index : undefined}\n              aria-label={thumbLabel}\n              className={cn(\n                'size-6 rounded-full bg-white shadow-[0_2px_6px_rgba(0,0,0,0.22),0_0_1px_rgba(0,0,0,0.14)]',\n                'transition-transform duration-150 ease-[var(--fort-ease)]',\n                'hover:scale-105 active:scale-110',\n                'has-[:focus-visible]:outline-2 has-[:focus-visible]:outline-offset-2 has-[:focus-visible]:outline-[var(--fort-tint)]',\n              )}\n            />\n          ))}\n        </BaseSlider.Track>\n      </BaseSlider.Control>\n    </BaseSlider.Root>\n  );\n}\n\n",
+      "type": "registry:ui",
+      "target": "components/ui/slider.tsx"
+    }
+  ],
+  "type": "registry:ui"
+}

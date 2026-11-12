@@ -1,0 +1,21 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "progress",
+  "title": "Progress & Spinner",
+  "description": "Linear progress bar and activity indicator spinner.",
+  "dependencies": [
+    "@base-ui/react"
+  ],
+  "registryDependencies": [
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "registry/web/ui/progress.tsx",
+      "content": "'use client';\n\nimport * as React from 'react';\nimport { Progress as BaseProgress } from '@base-ui/react/progress';\nimport { cn } from '@/lib/utils';\n\nexport interface ProgressProps\n  extends React.ComponentProps<typeof BaseProgress.Root> {\n  label?: React.ReactNode;\n  showValue?: boolean;\n}\n\n/**\n * Clean linear progress bar built on Base UI Progress.\n */\nexport function Progress({\n  className,\n  label,\n  showValue = false,\n  ...props\n}: ProgressProps) {\n  return (\n    <BaseProgress.Root\n      className={cn('fort-ui flex w-full flex-col gap-1.5', className)}\n      {...props}\n    >\n      {label || showValue ? (\n        <div className=\"flex items-center justify-between text-[13px]\">\n          {label ? (\n            <BaseProgress.Label className=\"font-medium text-[var(--fort-label)]\">\n              {label}\n            </BaseProgress.Label>\n          ) : (\n            <span />\n          )}\n          {showValue ? (\n            <BaseProgress.Value className=\"tabular-nums text-[var(--fort-label-secondary)]\" />\n          ) : null}\n        </div>\n      ) : null}\n      <BaseProgress.Track className=\"h-1.5 w-full overflow-hidden rounded-full bg-[var(--fort-surface-muted)]\">\n        <BaseProgress.Indicator className=\"h-full rounded-full bg-[var(--fort-tint)] transition-[width] duration-300 ease-[var(--fort-ease)]\" />\n      </BaseProgress.Track>\n    </BaseProgress.Root>\n  );\n}\n\nexport interface SpinnerProps extends React.ComponentProps<'svg'> {\n  size?: 'sm' | 'md' | 'lg';\n}\n\nconst SPINNER_SIZES: Record<NonNullable<SpinnerProps['size']>, string> = {\n  sm: 'size-4',\n  md: 'size-5',\n  lg: 'size-7',\n};\n\n/**\n * Restrained activity indicator spinner.\n */\nexport function Spinner({\n  size = 'md',\n  className,\n  ...props\n}: SpinnerProps) {\n  return (\n    <svg\n      role=\"status\"\n      aria-label={props['aria-label'] ?? 'Loading'}\n      viewBox=\"0 0 24 24\"\n      fill=\"none\"\n      className={cn(\n        'animate-spin text-[var(--fort-label-secondary)]',\n        SPINNER_SIZES[size],\n        className,\n      )}\n      {...props}\n    >\n      <circle\n        cx=\"12\"\n        cy=\"12\"\n        r=\"9\"\n        stroke=\"currentColor\"\n        strokeWidth=\"2.5\"\n        className=\"opacity-20\"\n      />\n      <path\n        d=\"M21 12a9 9 0 0 0-9-9\"\n        stroke=\"currentColor\"\n        strokeWidth=\"2.5\"\n        strokeLinecap=\"round\"\n      />\n    </svg>\n  );\n}\n\n",
+      "type": "registry:ui",
+      "target": "components/ui/progress.tsx"
+    }
+  ],
+  "type": "registry:ui"
+}

@@ -1,0 +1,33 @@
+---
+title: Activity Pill
+description: Interactive floating status pill that morphs between compact and expanded views.
+---
+
+<ProCallout title="Activity Pill (Pro)" />
+
+<ComponentPreview
+  title="Morphing Status Pill"
+  code={`import { ActivityPill } from '@/components/ui/activity-pill';
+import { Button } from '@/components/ui/button';
+
+export function Example() {
+  return (
+    <ActivityPill
+      compact={<span>Now Playing</span>}
+      expanded={<Button size="sm" shape="pill">Pause</Button>}
+    />
+  );
+}`}
+>
+  <ActivityPillDemo />
+</ComponentPreview>
+
+## Installation
+
+Authenticate once with your Pro license token, then install the component:
+
+```bash
+npx fort-ui auth <your-pro-token>
+npx fort-ui add activity-pill
+```
+

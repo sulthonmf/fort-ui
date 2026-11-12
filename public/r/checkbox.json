@@ -1,0 +1,22 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "checkbox",
+  "title": "Checkbox",
+  "description": "Circular checkmark toggle built on Base UI Checkbox.",
+  "dependencies": [
+    "@base-ui/react",
+    "lucide-react"
+  ],
+  "registryDependencies": [
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "registry/web/ui/checkbox.tsx",
+      "content": "'use client';\n\nimport * as React from 'react';\nimport { Checkbox as BaseCheckbox } from '@base-ui/react/checkbox';\nimport { Check, Minus } from 'lucide-react';\nimport { cn } from '@/lib/utils';\n\nexport interface CheckboxProps\n  extends React.ComponentProps<typeof BaseCheckbox.Root> {\n  label?: React.ReactNode;\n}\n\n/**\n * Circular selection checkbox built on Base UI Checkbox.\n */\nexport function Checkbox({\n  className,\n  label,\n  indeterminate,\n  ...props\n}: CheckboxProps) {\n  const control = (\n    <BaseCheckbox.Root\n      indeterminate={indeterminate}\n      className={cn(\n        'flex size-[22px] shrink-0 cursor-pointer items-center justify-center rounded-full border-[1.5px]',\n        'border-[var(--fort-label-secondary)]/45 bg-transparent text-white',\n        'data-[checked]:border-[var(--fort-tint)] data-[checked]:bg-[var(--fort-tint)]',\n        'data-[indeterminate]:border-[var(--fort-tint)] data-[indeterminate]:bg-[var(--fort-tint)]',\n        'transition-[background-color,border-color,transform] duration-150 ease-[var(--fort-ease)] active:scale-[0.92]',\n        'focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--fort-tint)]',\n        'data-[disabled]:cursor-not-allowed data-[disabled]:opacity-45',\n        !label && className,\n      )}\n      {...props}\n    >\n      <BaseCheckbox.Indicator className=\"flex items-center justify-center\">\n        {indeterminate ? (\n          <Minus aria-hidden=\"true\" className=\"size-3.5 stroke-[2.75]\" />\n        ) : (\n          <Check aria-hidden=\"true\" className=\"size-3.5 stroke-[2.75]\" />\n        )}\n      </BaseCheckbox.Indicator>\n    </BaseCheckbox.Root>\n  );\n\n  if (!label) {\n    return control;\n  }\n\n  return (\n    <label\n      className={cn(\n        'fort-ui inline-flex cursor-pointer items-center gap-2.5 text-[15px] text-[var(--fort-label)] select-none',\n        props.disabled && 'cursor-not-allowed opacity-55',\n        className,\n      )}\n    >\n      {control}\n      <span>{label}</span>\n    </label>\n  );\n}\n\n",
+      "type": "registry:ui",
+      "target": "components/ui/checkbox.tsx"
+    }
+  ],
+  "type": "registry:ui"
+}

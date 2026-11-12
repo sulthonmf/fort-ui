@@ -1,0 +1,36 @@
+---
+title: Accordion
+description: Collapsible grouped disclosure list built on Base UI Accordion.
+---
+
+<ComponentPreview
+  title="Grouped Disclosure"
+  code={`import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from '@/components/ui/accordion';
+
+export function Example() {
+  return (
+    <Accordion defaultValue={['item-1']}>
+      <AccordionItem value="item-1">
+        <AccordionTrigger>Copy-Paste Ownership</AccordionTrigger>
+        <AccordionContent>
+          Components live directly in your repository.
+        </AccordionContent>
+      </AccordionItem>
+    </Accordion>
+  );
+}`}
+>
+  <AccordionDemo />
+</ComponentPreview>
+
+## Installation
+
+```bash
+npx fort-ui add accordion
+```
+

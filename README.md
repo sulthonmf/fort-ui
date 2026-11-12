@@ -1,45 +1,33 @@
-# .
+# fort-ui
 
-This is a Next.js application generated with
-[Create Fumadocs](https://github.com/fuma-nama/fumadocs).
+Touch-first Cupertino-inspired copy-paste UI components for React and Tailwind CSS, powered by Base UI, Fumadocs, and a dedicated CLI + registry.
 
-Run development server:
+## Development
 
 ```bash
 npm run dev
-# or
-pnpm dev
-# or
-yarn dev
 ```
 
-Open http://localhost:3000 with your browser to see the result.
+Open http://localhost:3000 for the interactive preview or http://localhost:3000/docs for documentation.
 
-## Explore
+## Scripts
 
-In the project, you can see:
+- `npm run dev` : Start the Next.js + Fumadocs development server
+- `npm run registry:build` : Build `registry.json` (`public/r/`), `registry.pro.json` (`server/r/pro/`), and `registry.native.json` (`public/r/native/`)
+- `npm run fort-ui -- <cmd>` : Run the local `fort-ui` CLI (`init`, `add`, `list`, `auth`)
+- `npm run cli:test` : Run CLI integration tests (Web, Pro API auth, Expo) and native TypeScript checks
+- `npm run types:check` : Run `next typegen` and TypeScript typechecking
+- `npm run build` : Rebuild registries and build the production Next.js bundle
 
-- `lib/source.ts`: Code for content source adapter, [`loader()`](https://fumadocs.dev/docs/headless/source-api) provides the interface to access your content.
-- `lib/layout.shared.tsx`: Shared options for layouts, optional but preferred to keep.
+## Structure
 
-| Route                     | Description                                            |
-| ------------------------- | ------------------------------------------------------ |
-| `app/(home)`              | The route group for your landing page and other pages. |
-| `app/docs`                | The documentation layout and pages.                    |
-| `app/api/search/route.ts` | The Route Handler for search.                          |
-
-### Fumadocs MDX
-
-Collections are defined with the [Macro API](https://fumadocs.dev/docs/mdx/macro) in `lib/source.ts`.
-
-Read the [Introduction](https://fumadocs.dev/docs/mdx) for further details.
-
-## Learn More
-
-To learn more about Next.js and Fumadocs, take a look at the following
-resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js
-  features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-- [Fumadocs](https://fumadocs.dev) - learn about Fumadocs
+- `registry/web/ui/` : 27 Web component source files (25 Free + 2 Pro)
+- `registry/native/` : Expo / React Native semantic tokens and 14 core native components
+- `app/api/r/pro/` : Metadata catalog and token-protected Pro component download endpoints
+- `packages/cli/` : `fort-ui` CLI package (`init`, `add`, `list`, `auth`) with Web & Expo auto-detection
+- `lib/pro-registry.mjs` : Bearer token verification and allowlisted Pro payload loader
+- `lib/utils.ts` : Shared `cn()` class helper
+- `lib/shared.ts` : App name, repo config, and `donateConfig.url` (Saweria / Buy Me a Coffee)
+- `registry.json`, `registry.pro.json`, `registry.native.json` : Registry manifests consumed by `shadcn build`
+- `content/docs/` : Fumadocs MDX documentation pages
+- `components/` : Documentation preview helpers, Buy Me a Coffee button, and interactive demos

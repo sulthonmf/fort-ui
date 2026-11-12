@@ -1,0 +1,32 @@
+---
+title: Button
+description: Touch-first action button with filled, tinted, gray, plain, and destructive variants.
+---
+
+<ComponentPreview
+  title="Variants"
+  code={`import { Button } from '@/components/ui/button';
+
+export function Example() {
+  return (
+    <div className="flex flex-wrap gap-2.5">
+      <Button variant="filled">Save Changes</Button>
+      <Button variant="tinted">Share</Button>
+      <Button variant="gray">Cancel</Button>
+      <Button variant="plain">Edit</Button>
+      <Button variant="filled" shape="pill" size="sm">Follow</Button>
+      <Button variant="destructive-tinted" size="sm">Remove</Button>
+      <Button variant="destructive" size="sm">Delete</Button>
+    </div>
+  );
+}`}
+>
+  <ButtonDemo />
+</ComponentPreview>
+
+## Installation
+
+```bash
+npx fort-ui add button
+```
+

@@ -1,13 +1,129 @@
 ---
-title: Hello World
-description: Your first document
+title: Introduction
+description: Touch-first mobile React components built with Tailwind CSS, Base UI, and a copy-paste registry.
 ---
 
-Welcome to the docs! You can start writing documents in `/content/docs`.
+fort-ui gives you copy-pasteable React components inspired by clean Cupertino mobile ergonomics: hairline separators, tactile press states, restrained surfaces, and accessible keyboard navigation via Base UI.
 
-## What is Next?
+> fort-ui is an independent open-source project and is not affiliated with or endorsed by Apple Inc.
+
+## Architecture
+
+- **Web Registry (`registry/web`)**: Touch-first React components built with Tailwind CSS and `@base-ui/react`.
+- **Expo / React Native (`registry/native`)**: Native components using `StyleSheet` and `useFortTheme()` sharing the same semantic token names (`bg`, `surface`, `tint`, `separator`).
+- **Registry & CLI**: `npm run registry:build` builds free Web and Native items into `public/r/` and protected Pro items into `server/r/pro/` served behind `/api/r/pro/[name]`, while `packages/cli` provides the `fort-ui` CLI (`init`, `add`, `list`, `auth`).
+
+## Installation
+
+### 1. Using the `fort-ui` CLI
+
+Initialize configuration, `lib/utils.ts`, and `--fort-*` CSS tokens automatically:
+
+```bash
+npx fort-ui init
+npx fort-ui add button
+```
+
+While testing locally from this repository before publishing `packages/cli` to npm, run `npm link` inside `packages/cli` or use the workspace script:
+
+```bash
+npm run fort-ui -- init --cwd /path/to/your-app
+npm run fort-ui -- add button --cwd /path/to/your-app
+```
+
+You can also install directly from any static registry URL with `shadcn`:
+
+```bash
+npx shadcn@latest add http://localhost:3000/r/button.json
+```
+
+### 2. Manual CSS Tokens
+
+If you configure styles manually, paste these tokens into `globals.css`:
+
+```css
+:root {
+  --fort-bg: #f2f2f7;
+  --fort-surface: #ffffff;
+  --fort-surface-muted: #e5e5ea;
+  --fort-surface-pressed: #d1d1d6;
+  --fort-label: #111113;
+  --fort-label-secondary: #52525b;
+  --fort-separator: rgba(60, 60, 67, 0.14);
+  --fort-tint: #0066cc;
+  --fort-tint-text: #0055b3;
+  --fort-tint-soft: rgba(0, 102, 204, 0.12);
+  --fort-destructive: #d70015;
+  --fort-destructive-text: #c20013;
+  --fort-destructive-soft: rgba(215, 0, 21, 0.11);
+  --fort-switch-on: #248a3d;
+  --fort-switch-off: rgba(120, 120, 128, 0.28);
+  --fort-ease: cubic-bezier(0.32, 0.72, 0, 1);
+  --font-fort-sans: -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+}
+
+.dark {
+  --fort-bg: #000000;
+  --fort-surface: #1c1c1e;
+  --fort-surface-muted: #2c2c2e;
+  --fort-surface-pressed: #3a3a3c;
+  --fort-label: #f5f5f7;
+  --fort-label-secondary: #a1a1aa;
+  --fort-separator: rgba(255, 255, 255, 0.14);
+  --fort-tint: #0a66d6;
+  --fort-tint-text: #4da3ff;
+  --fort-tint-soft: rgba(77, 163, 255, 0.16);
+  --fort-destructive: #d70015;
+  --fort-destructive-text: #ff6961;
+  --fort-destructive-soft: rgba(255, 105, 97, 0.16);
+  --fort-switch-on: #289e47;
+  --fort-switch-off: rgba(120, 120, 128, 0.38);
+}
+
+.fort-ui {
+  font-family: var(--font-fort-sans);
+}
+```
+
+## Available Components
 
 <Cards>
-  <Card title="Learn more about Next.js" href="https://nextjs.org/docs" />
-  <Card title="Learn more about Fumadocs" href="https://fumadocs.dev" />
+  <Card title="Button" href="/docs/components/button" description="Filled, tinted, gray, plain, and destructive action buttons." />
+  <Card title="Badge" href="/docs/components/badge" description="Compact status and numeric counter pills." />
+  <Card title="Checkbox" href="/docs/components/checkbox" description="Circular touch-first checkmark toggle built on Base UI." />
+  <Card title="Input & SearchBar" href="/docs/components/input" description="Soft filled text inputs and search bar with clear action." />
+  <Card title="Textarea" href="/docs/components/textarea" description="Multi-line text field matching Input tokens." />
+  <Card title="Select" href="/docs/components/select" description="Accessible picker dropdown built on Base UI Select." />
+  <Card title="Radio Group" href="/docs/components/radio-group" description="Circular radio buttons and checkmark selection lists." />
+  <Card title="OTP Input" href="/docs/components/otp-input" description="6-digit verification code input built on Base UI OTPField." />
+  <Card title="Slider" href="/docs/components/slider" description="Smooth single or multi-thumb range slider." />
+  <Card title="Switch" href="/docs/components/switch" description="Accessible mobile-proportioned toggle switch built on Base UI." />
+  <Card title="Progress & Spinner" href="/docs/components/progress" description="Linear progress bar and restrained activity indicator." />
+  <Card title="Segmented Control" href="/docs/components/segmented-control" description="Sliding indicator tab switcher powered by Base UI Tabs." />
+  <Card title="Grouped List" href="/docs/components/grouped-list" description="Inset settings-style rows with hairline dividers." />
+  <Card title="Accordion" href="/docs/components/accordion" description="Collapsible grouped disclosure list built on Base UI." />
+  <Card title="Card" href="/docs/components/card" description="Grouped surface container with header and footer slots." />
+  <Card title="Avatar" href="/docs/components/avatar" description="Circular user avatar with fallback initials." />
+  <Card title="Skeleton" href="/docs/components/skeleton" description="Restrained loading placeholder matching surface tokens." />
+  <Card title="Nav Bar" href="/docs/components/nav-bar" description="Top navigation bar with back action and large title." />
+  <Card title="Tab Bar" href="/docs/components/tab-bar" description="Mobile bottom tab bar with badge counters and floating mode." />
+  <Card title="Toast" href="/docs/components/toast" description="Floating banner notification powered by Base UI." />
+  <Card title="Menu" href="/docs/components/menu" description="Translucent context popup menu with hairline separators." />
+  <Card title="Popover" href="/docs/components/popover" description="Floating popover card positioned cleanly around triggers." />
+  <Card title="Alert Dialog" href="/docs/components/alert-dialog" description="Centered modal alert with stacked or split actions." />
+  <Card title="Sheet" href="/docs/components/sheet" description="Swipeable bottom sheet modal with grabber handle." />
+  <Card title="Action Sheet" href="/docs/components/action-sheet" description="Stacked bottom action menu with separated cancel card." />
+</Cards>
+
+## Pro Components
+
+<Cards>
+  <Card title="Activity Pill (Pro)" href="/docs/components/activity-pill" description="Morphing floating status pill with compact and expanded views." />
+  <Card title="Swipe Row (Pro)" href="/docs/components/swipe-row" description="Swipeable list row revealing contextual actions." />
+</Cards>
+
+## Expo / React Native
+
+<Cards>
+  <Card title="Expo & React Native Guide" href="/docs/expo" description="Use fort-ui semantic tokens and native components in Expo apps." />
 </Cards>

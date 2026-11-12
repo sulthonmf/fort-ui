@@ -1,0 +1,22 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "select",
+  "title": "Select",
+  "description": "Accessible picker dropdown built on Base UI Select.",
+  "dependencies": [
+    "@base-ui/react",
+    "lucide-react"
+  ],
+  "registryDependencies": [
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "registry/web/ui/select.tsx",
+      "content": "'use client';\n\nimport * as React from 'react';\nimport { Select as BaseSelect } from '@base-ui/react/select';\nimport { Check, ChevronsUpDown } from 'lucide-react';\nimport { cn } from '@/lib/utils';\n\nexport const Select = BaseSelect.Root;\nexport const SelectGroup = BaseSelect.Group;\n\nexport interface SelectTriggerProps\n  extends React.ComponentProps<typeof BaseSelect.Trigger> {\n  placeholder?: React.ReactNode;\n}\n\n/**\n * Accessible picker trigger and popup built on Base UI Select.\n */\nexport function SelectTrigger({\n  className,\n  placeholder = 'Select option',\n  children,\n  ...props\n}: SelectTriggerProps) {\n  return (\n    <BaseSelect.Trigger\n      className={cn(\n        'fort-ui inline-flex h-11 w-full cursor-pointer items-center justify-between gap-2 rounded-[12px] border border-[var(--fort-separator)] bg-[var(--fort-surface)] px-3.5 text-[15px] text-[var(--fort-label)]',\n        'transition-colors duration-150 hover:bg-[var(--fort-surface-muted)]/45',\n        'focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--fort-tint)]',\n        'data-[disabled]:cursor-not-allowed data-[disabled]:opacity-45',\n        className,\n      )}\n      {...props}\n    >\n      {children ?? <BaseSelect.Value placeholder={placeholder} className=\"truncate\" />}\n      <BaseSelect.Icon className=\"shrink-0 text-[var(--fort-label-secondary)]\">\n        <ChevronsUpDown aria-hidden=\"true\" className=\"size-4\" />\n      </BaseSelect.Icon>\n    </BaseSelect.Trigger>\n  );\n}\n\nexport interface SelectContentProps\n  extends React.ComponentProps<typeof BaseSelect.Popup> {\n  sideOffset?: number;\n}\n\nexport function SelectContent({\n  className,\n  children,\n  sideOffset = 6,\n  ...props\n}: SelectContentProps) {\n  return (\n    <BaseSelect.Portal>\n      <BaseSelect.Positioner sideOffset={sideOffset} className=\"z-50\">\n        <BaseSelect.Popup\n          className={cn(\n            'fort-ui min-w-[var(--anchor-width)] overflow-hidden rounded-[14px] border border-[var(--fort-separator)] bg-[var(--fort-surface)]/95 p-1 shadow-xl backdrop-blur-xl',\n            'origin-[var(--transform-origin)] transition-[transform,opacity] duration-150 ease-[var(--fort-ease)]',\n            'data-[starting-style]:scale-95 data-[starting-style]:opacity-0',\n            'data-[ending-style]:scale-95 data-[ending-style]:opacity-0',\n            'focus-visible:outline-none',\n            className,\n          )}\n          {...props}\n        >\n          <BaseSelect.List className=\"max-h-64 overflow-y-auto\">\n            {children}\n          </BaseSelect.List>\n        </BaseSelect.Popup>\n      </BaseSelect.Positioner>\n    </BaseSelect.Portal>\n  );\n}\n\nexport function SelectLabel({\n  className,\n  ...props\n}: React.ComponentProps<typeof BaseSelect.GroupLabel>) {\n  return (\n    <BaseSelect.GroupLabel\n      className={cn(\n        'px-3 py-1.5 text-[12px] font-semibold text-[var(--fort-label-secondary)]',\n        className,\n      )}\n      {...props}\n    />\n  );\n}\n\nexport function SelectItem({\n  className,\n  children,\n  ...props\n}: React.ComponentProps<typeof BaseSelect.Item>) {\n  return (\n    <BaseSelect.Item\n      className={cn(\n        'flex min-h-[40px] cursor-pointer items-center justify-between gap-3 rounded-[10px] px-3 py-2 text-[14px] font-medium text-[var(--fort-label)] select-none',\n        'outline-none transition-colors duration-100',\n        'data-[highlighted]:bg-[var(--fort-surface-muted)]/80',\n        'data-[disabled]:pointer-events-none data-[disabled]:opacity-45',\n        className,\n      )}\n      {...props}\n    >\n      <BaseSelect.ItemText className=\"truncate\">{children}</BaseSelect.ItemText>\n      <BaseSelect.ItemIndicator className=\"shrink-0 text-[var(--fort-tint-text)]\">\n        <Check aria-hidden=\"true\" className=\"size-4\" />\n      </BaseSelect.ItemIndicator>\n    </BaseSelect.Item>\n  );\n}\n\n",
+      "type": "registry:ui",
+      "target": "components/ui/select.tsx"
+    }
+  ],
+  "type": "registry:ui"
+}

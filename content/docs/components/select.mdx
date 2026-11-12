@@ -1,0 +1,41 @@
+---
+title: Select
+description: Accessible picker dropdown built on Base UI Select.
+---
+
+<ComponentPreview
+  title="Option Picker"
+  code={`import {
+  Select,
+  SelectContent,
+  SelectGroup,
+  SelectItem,
+  SelectLabel,
+  SelectTrigger,
+} from '@/components/ui/select';
+
+export function Example() {
+  return (
+    <Select defaultValue="1m">
+      <SelectTrigger placeholder="Choose time" />
+      <SelectContent>
+        <SelectGroup>
+          <SelectLabel>Auto-Lock</SelectLabel>
+          <SelectItem value="30s">30 Seconds</SelectItem>
+          <SelectItem value="1m">1 Minute</SelectItem>
+          <SelectItem value="never">Never</SelectItem>
+        </SelectGroup>
+      </SelectContent>
+    </Select>
+  );
+}`}
+>
+  <SelectDemo />
+</ComponentPreview>
+
+## Installation
+
+```bash
+npx fort-ui add select
+```
+

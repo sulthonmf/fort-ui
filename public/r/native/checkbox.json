@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "checkbox",
+  "title": "Checkbox (Native)",
+  "description": "Circular touch-first checkmark toggle with generous hitSlop.",
+  "registryDependencies": [
+    "tokens"
+  ],
+  "files": [
+    {
+      "path": "registry/native/ui/checkbox.tsx",
+      "content": "import * as React from 'react';\nimport {\n  Pressable,\n  StyleSheet,\n  Text,\n  View,\n  type StyleProp,\n  type TextStyle,\n  type ViewStyle,\n} from 'react-native';\nimport { useFortTheme } from '@/lib/fort-tokens';\n\nexport interface CheckboxProps {\n  checked?: boolean;\n  defaultChecked?: boolean;\n  indeterminate?: boolean;\n  onCheckedChange?: (checked: boolean) => void;\n  disabled?: boolean;\n  label?: React.ReactNode;\n  style?: StyleProp<ViewStyle>;\n  labelStyle?: StyleProp<TextStyle>;\n}\n\n/**\n * Circular touch-first checkbox toggle for React Native.\n */\nexport function Checkbox({\n  checked: controlledChecked,\n  defaultChecked = false,\n  indeterminate = false,\n  onCheckedChange,\n  disabled = false,\n  label,\n  style,\n  labelStyle,\n}: CheckboxProps) {\n  const theme = useFortTheme();\n  const [uncontrolledChecked, setUncontrolledChecked] =\n    React.useState(defaultChecked);\n  const isChecked = controlledChecked ?? uncontrolledChecked;\n  const active = isChecked || indeterminate;\n\n  function toggle() {\n    if (disabled) return;\n    const next = !isChecked;\n    if (controlledChecked === undefined) {\n      setUncontrolledChecked(next);\n    }\n    onCheckedChange?.(next);\n  }\n\n  return (\n    <Pressable\n      accessibilityRole=\"checkbox\"\n      accessibilityState={{\n        checked: indeterminate ? 'mixed' : isChecked,\n        disabled,\n      }}\n      hitSlop={10}\n      disabled={disabled}\n      onPress={toggle}\n      style={({ pressed }) => [\n        styles.row,\n        { opacity: disabled ? 0.45 : pressed ? 0.8 : 1 },\n        style,\n      ]}\n    >\n      <View\n        style={[\n          styles.circle,\n          {\n            borderColor: active ? theme.tint : theme.labelSecondary,\n            backgroundColor: active ? theme.tint : 'transparent',\n          },\n        ]}\n      >\n        {active ? (\n          <Text style={styles.mark}>{indeterminate ? '−' : '✓'}</Text>\n        ) : null}\n      </View>\n      {label ? (\n        typeof label === 'string' || typeof label === 'number' ? (\n          <Text style={[styles.label, { color: theme.label }, labelStyle]}>\n            {label}\n          </Text>\n        ) : (\n          label\n        )\n      ) : null}\n    </Pressable>\n  );\n}\n\nconst styles = StyleSheet.create({\n  row: {\n    flexDirection: 'row',\n    alignItems: 'center',\n    gap: 10,\n    minHeight: 32,\n  },\n  circle: {\n    width: 22,\n    height: 22,\n    borderRadius: 11,\n    borderWidth: 1.5,\n    alignItems: 'center',\n    justifyContent: 'center',\n  },\n  mark: {\n    color: '#ffffff',\n    fontSize: 13,\n    fontWeight: '700',\n    lineHeight: 15,\n  },\n  label: {\n    fontSize: 15,\n  },\n});\n",
+      "type": "registry:ui",
+      "target": "components/ui/checkbox.tsx"
+    }
+  ],
+  "type": "registry:ui"
+}

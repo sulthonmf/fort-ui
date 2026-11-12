@@ -1,15 +1,21 @@
 import { createGetUrl } from 'fumadocs-core/source';
 
-export const appName = 'My App';
+export const appName = 'fort-ui';
 export const docsRoute = '/docs';
 export const docsImageRoute = '/og/docs';
 export const docsContentRoute = '/llms.mdx/docs';
 
-// fill this with your actual GitHub info, for example:
+// GitHub repository used for navbar links and "Edit on GitHub".
 export const gitConfig = {
-  user: 'fuma-nama',
-  repo: 'fumadocs',
+  user: 'sulthonmf',
+  repo: 'fort-ui',
   branch: 'main',
+};
+
+// Configure your Saweria or donation URL (e.g. https://saweria.co/username).
+export const donateConfig = {
+  url: process.env.NEXT_PUBLIC_DONATE_URL ?? 'https://saweria.co/sulthonmf',
+  label: 'Buy Me a Coffee',
 };
 
 const getContentUrl = createGetUrl(docsContentRoute);

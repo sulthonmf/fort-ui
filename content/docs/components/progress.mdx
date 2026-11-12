@@ -1,0 +1,27 @@
+---
+title: Progress & Spinner
+description: Linear progress bar and activity indicator spinner.
+---
+
+<ComponentPreview
+  title="Progress Bar & Activity Spinner"
+  code={`import { Progress, Spinner } from '@/components/ui/progress';
+
+export function Example() {
+  return (
+    <div className="space-y-4">
+      <Progress label="Backup Progress" showValue value={64} />
+      <Spinner />
+    </div>
+  );
+}`}
+>
+  <ProgressDemo />
+</ComponentPreview>
+
+## Installation
+
+```bash
+npx fort-ui add progress
+```
+

@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "card",
+  "title": "Card (Native)",
+  "description": "Grouped surface container with hairline borders for React Native.",
+  "registryDependencies": [
+    "tokens"
+  ],
+  "files": [
+    {
+      "path": "registry/native/ui/card.tsx",
+      "content": "import * as React from 'react';\nimport {\n  StyleSheet,\n  Text,\n  View,\n  type TextProps,\n  type ViewProps,\n} from 'react-native';\nimport { useFortTheme } from '@/lib/fort-tokens';\n\n/**\n * Grouped surface container with hairline border matching fort-ui web cards.\n */\nexport function Card({ style, ...props }: ViewProps) {\n  const theme = useFortTheme();\n\n  return (\n    <View\n      style={[\n        styles.card,\n        {\n          backgroundColor: theme.surface,\n          borderColor: theme.separator,\n          borderWidth: theme.hairline,\n        },\n        style,\n      ]}\n      {...props}\n    />\n  );\n}\n\nexport function CardHeader({ style, ...props }: ViewProps) {\n  return <View style={[styles.header, style]} {...props} />;\n}\n\nexport function CardTitle({ style, ...props }: TextProps) {\n  const theme = useFortTheme();\n  return (\n    <Text style={[styles.title, { color: theme.label }, style]} {...props} />\n  );\n}\n\nexport function CardDescription({ style, ...props }: TextProps) {\n  const theme = useFortTheme();\n  return (\n    <Text\n      style={[styles.description, { color: theme.labelSecondary }, style]}\n      {...props}\n    />\n  );\n}\n\nexport function CardContent({ style, ...props }: ViewProps) {\n  return <View style={[styles.content, style]} {...props} />;\n}\n\nexport function CardFooter({ style, ...props }: ViewProps) {\n  const theme = useFortTheme();\n  return (\n    <View\n      style={[\n        styles.footer,\n        {\n          borderTopColor: theme.separator,\n          borderTopWidth: theme.hairline,\n        },\n        style,\n      ]}\n      {...props}\n    />\n  );\n}\n\nconst styles = StyleSheet.create({\n  card: {\n    borderRadius: 18,\n    overflow: 'hidden',\n  },\n  header: {\n    paddingHorizontal: 20,\n    paddingTop: 20,\n    paddingBottom: 12,\n    gap: 4,\n  },\n  title: {\n    fontSize: 17,\n    fontWeight: '600',\n  },\n  description: {\n    fontSize: 13,\n    lineHeight: 18,\n  },\n  content: {\n    paddingHorizontal: 20,\n    paddingBottom: 20,\n  },\n  footer: {\n    flexDirection: 'row',\n    alignItems: 'center',\n    justifyContent: 'flex-end',\n    gap: 8,\n    paddingHorizontal: 20,\n    paddingVertical: 14,\n  },\n});\n",
+      "type": "registry:ui",
+      "target": "components/ui/card.tsx"
+    }
+  ],
+  "type": "registry:ui"
+}

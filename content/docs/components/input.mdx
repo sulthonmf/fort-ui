@@ -1,0 +1,35 @@
+---
+title: Input & SearchBar
+description: Minimalist text input and search bar with inline clear button.
+---
+
+<ComponentPreview
+  title="SearchBar and Text Input"
+  code={`import * as React from 'react';
+import { Input, SearchBar } from '@/components/ui/input';
+
+export function Example() {
+  const [query, setQuery] = React.useState('');
+
+  return (
+    <div className="space-y-3">
+      <SearchBar
+        placeholder="Search settings"
+        value={query}
+        onChange={(e) => setQuery(e.target.value)}
+        onClear={() => setQuery('')}
+      />
+      <Input placeholder="Your device name" />
+    </div>
+  );
+}`}
+>
+  <InputDemo />
+</ComponentPreview>
+
+## Installation
+
+```bash
+npx fort-ui add input
+```
+

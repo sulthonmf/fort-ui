@@ -1,0 +1,21 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "activity-pill",
+  "title": "Activity Pill",
+  "description": "Pro morphing status pill transitioning smoothly between compact and expanded views.",
+  "registryDependencies": [
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "registry/web/ui/activity-pill.tsx",
+      "content": "'use client';\n\nimport * as React from 'react';\nimport { cn } from '@/lib/utils';\n\nexport interface ActivityPillProps {\n  open?: boolean;\n  defaultOpen?: boolean;\n  onOpenChange?: (open: boolean) => void;\n  compact: React.ReactNode;\n  expanded: React.ReactNode;\n  className?: string;\n  label?: string;\n}\n\n/**\n * Interactive floating status pill that morphs smoothly between compact and expanded states.\n */\nexport function ActivityPill({\n  open: controlledOpen,\n  defaultOpen = false,\n  onOpenChange,\n  compact,\n  expanded,\n  className,\n  label = 'Toggle activity details',\n}: ActivityPillProps) {\n  const [uncontrolledOpen, setUncontrolledOpen] = React.useState(defaultOpen);\n  const isControlled = controlledOpen !== undefined;\n  const isOpen = isControlled ? controlledOpen : uncontrolledOpen;\n  const containerRef = React.useRef<HTMLDivElement>(null);\n\n  const setOpen = React.useCallback(\n    (next: boolean) => {\n      if (!isControlled) {\n        setUncontrolledOpen(next);\n      }\n      onOpenChange?.(next);\n    },\n    [isControlled, onOpenChange],\n  );\n\n  React.useEffect(() => {\n    if (!isOpen) return;\n\n    function handleKeyDown(event: KeyboardEvent) {\n      if (event.key === 'Escape') {\n        setOpen(false);\n      }\n    }\n\n    function handlePointerDown(event: PointerEvent) {\n      if (\n        containerRef.current &&\n        !containerRef.current.contains(event.target as Node)\n      ) {\n        setOpen(false);\n      }\n    }\n\n    document.addEventListener('keydown', handleKeyDown);\n    document.addEventListener('pointerdown', handlePointerDown);\n    return () => {\n      document.removeEventListener('keydown', handleKeyDown);\n      document.removeEventListener('pointerdown', handlePointerDown);\n    };\n  }, [isOpen, setOpen]);\n\n  return (\n    <div ref={containerRef} className={cn('fort-ui flex justify-center', className)}>\n      <div\n        className={cn(\n          'relative overflow-hidden border border-white/10 bg-[#111113] text-[#f5f5f7] shadow-xl',\n          'transition-[width,border-radius,padding] duration-300 ease-[var(--fort-ease)]',\n          isOpen\n            ? 'w-full max-w-[340px] rounded-[26px] p-4'\n            : 'w-auto min-w-[210px] max-w-[290px] rounded-full px-3.5 py-2',\n        )}\n      >\n        {!isOpen ? (\n          <button\n            type=\"button\"\n            aria-expanded={false}\n            aria-label={label}\n            onClick={() => setOpen(true)}\n            className=\"flex w-full cursor-pointer items-center justify-between gap-3 text-left focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--fort-tint)]\"\n          >\n            {compact}\n          </button>\n        ) : (\n          <div className=\"space-y-3\">\n            <div className=\"flex items-start justify-between gap-3\">\n              <div className=\"min-w-0 flex-1\">{expanded}</div>\n              <button\n                type=\"button\"\n                aria-expanded={true}\n                aria-label=\"Collapse activity\"\n                onClick={() => setOpen(false)}\n                className=\"shrink-0 cursor-pointer rounded-full bg-white/12 px-2.5 py-1 text-[12px] font-medium text-white/90 transition-colors hover:bg-white/20 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--fort-tint)]\"\n              >\n                Done\n              </button>\n            </div>\n          </div>\n        )}\n      </div>\n    </div>\n  );\n}\n\n",
+      "type": "registry:ui",
+      "target": "components/ui/activity-pill.tsx"
+    }
+  ],
+  "meta": {
+    "tier": "pro"
+  },
+  "type": "registry:ui"
+}

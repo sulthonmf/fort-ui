@@ -1,0 +1,39 @@
+---
+title: Menu
+description: Translucent context popup menu built on Base UI Menu.
+---
+
+<ComponentPreview
+  title="Context Popup Menu"
+  code={`import { Button } from '@/components/ui/button';
+import {
+  Menu,
+  MenuContent,
+  MenuItem,
+  MenuSeparator,
+  MenuTrigger,
+} from '@/components/ui/menu';
+
+export function Example() {
+  return (
+    <Menu>
+      <MenuTrigger render={<Button variant="gray">Actions</Button>} />
+      <MenuContent>
+        <MenuItem>Share</MenuItem>
+        <MenuItem>Pin to Top</MenuItem>
+        <MenuSeparator />
+        <MenuItem destructive>Delete</MenuItem>
+      </MenuContent>
+    </Menu>
+  );
+}`}
+>
+  <MenuDemo />
+</ComponentPreview>
+
+## Installation
+
+```bash
+npx fort-ui add menu
+```
+

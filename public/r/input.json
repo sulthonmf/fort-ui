@@ -1,0 +1,21 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "input",
+  "title": "Input & SearchBar",
+  "description": "Minimalist text input and search bar with inline clear button.",
+  "dependencies": [
+    "lucide-react"
+  ],
+  "registryDependencies": [
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "registry/web/ui/input.tsx",
+      "content": "'use client';\n\nimport * as React from 'react';\nimport { Search, X } from 'lucide-react';\nimport { cn } from '@/lib/utils';\n\nexport type InputProps = React.ComponentProps<'input'>;\n\n/**\n * Minimalist text field with a soft filled surface and clear focus border.\n */\nexport function Input({ className, type = 'text', ...props }: InputProps) {\n  return (\n    <input\n      type={type}\n      className={cn(\n        'fort-ui flex h-11 w-full rounded-[12px] border border-transparent bg-[var(--fort-surface-muted)]/80 px-3.5 text-[15px] text-[var(--fort-label)]',\n        'placeholder:text-[var(--fort-label-secondary)]',\n        'transition-[background-color,border-color] duration-150 ease-[var(--fort-ease)]',\n        'focus:border-[var(--fort-tint)] focus:bg-[var(--fort-surface)] focus:outline-none',\n        'disabled:cursor-not-allowed disabled:opacity-45',\n        className,\n      )}\n      {...props}\n    />\n  );\n}\n\nexport interface SearchBarProps\n  extends Omit<React.ComponentProps<'input'>, 'type'> {\n  onClear?: () => void;\n}\n\n/**\n * Search field with leading search icon and inline clear button.\n */\nexport function SearchBar({\n  className,\n  value,\n  defaultValue,\n  onChange,\n  onClear,\n  placeholder = 'Search',\n  ...props\n}: SearchBarProps) {\n  const [internalValue, setInternalValue] = React.useState(\n    String(defaultValue ?? ''),\n  );\n  const isControlled = value !== undefined;\n  const currentValue = isControlled ? String(value) : internalValue;\n  const inputRef = React.useRef<HTMLInputElement>(null);\n\n  function handleChange(event: React.ChangeEvent<HTMLInputElement>) {\n    if (!isControlled) {\n      setInternalValue(event.target.value);\n    }\n    onChange?.(event);\n  }\n\n  function handleClear() {\n    if (!isControlled) {\n      setInternalValue('');\n    }\n    onClear?.();\n    if (inputRef.current && isControlled) {\n      const nativeSetter = Object.getOwnPropertyDescriptor(\n        window.HTMLInputElement.prototype,\n        'value',\n      )?.set;\n      nativeSetter?.call(inputRef.current, '');\n      inputRef.current.dispatchEvent(new Event('input', { bubbles: true }));\n    }\n    inputRef.current?.focus();\n  }\n\n  return (\n    <div className={cn('fort-ui relative flex w-full items-center', className)}>\n      <Search\n        aria-hidden=\"true\"\n        className=\"pointer-events-none absolute left-3 size-4 text-[var(--fort-label-secondary)]\"\n      />\n      <input\n        ref={inputRef}\n        type=\"search\"\n        value={currentValue}\n        onChange={handleChange}\n        placeholder={placeholder}\n        className={cn(\n          'flex h-10 w-full rounded-[12px] border border-transparent bg-[var(--fort-surface-muted)]/80 pr-9 pl-9 text-[15px] text-[var(--fort-label)]',\n          'placeholder:text-[var(--fort-label-secondary)]',\n          '[&::-webkit-search-cancel-button]:hidden',\n          'transition-[background-color,border-color] duration-150 ease-[var(--fort-ease)]',\n          'focus:border-[var(--fort-tint)] focus:bg-[var(--fort-surface)] focus:outline-none',\n          'disabled:cursor-not-allowed disabled:opacity-45',\n        )}\n        {...props}\n      />\n      {currentValue.length > 0 ? (\n        <button\n          type=\"button\"\n          onClick={handleClear}\n          aria-label=\"Clear search\"\n          className=\"absolute right-2 flex size-6 cursor-pointer items-center justify-center rounded-full bg-[var(--fort-label-secondary)]/25 text-[var(--fort-label)] transition-opacity hover:opacity-80 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--fort-tint)]\"\n        >\n          <X aria-hidden=\"true\" className=\"size-3.5\" />\n        </button>\n      ) : null}\n    </div>\n  );\n}\n\n",
+      "type": "registry:ui",
+      "target": "components/ui/input.tsx"
+    }
+  ],
+  "type": "registry:ui"
+}

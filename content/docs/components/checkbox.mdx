@@ -1,0 +1,27 @@
+---
+title: Checkbox
+description: Circular checkmark toggle built on Base UI Checkbox.
+---
+
+<ComponentPreview
+  title="Selection Checklist"
+  code={`import { Checkbox } from '@/components/ui/checkbox';
+
+export function Example() {
+  return (
+    <div className="flex flex-col gap-3">
+      <Checkbox label="Nearby Share" defaultChecked />
+      <Checkbox label="Cross-Device Sync" />
+    </div>
+  );
+}`}
+>
+  <CheckboxDemo />
+</ComponentPreview>
+
+## Installation
+
+```bash
+npx fort-ui add checkbox
+```
+

@@ -31,6 +31,9 @@ import {
   TabBarDemo,
   TextareaDemo,
   ToastDemo,
+  WheelPickerDemo,
+  NumpadDemo,
+  FilterChipsDemo,
 } from '@/components/demos/component-demos';
 
 export function getMDXComponents(components?: MDXComponents) {
@@ -66,6 +69,9 @@ export function getMDXComponents(components?: MDXComponents) {
     AccordionDemo,
     CardDemo,
     SkeletonDemo,
+    WheelPickerDemo,
+    NumpadDemo,
+    FilterChipsDemo,
     ...components,
   } satisfies MDXComponents;
 }

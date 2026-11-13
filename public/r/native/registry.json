@@ -211,6 +211,48 @@
           "target": "components/ui/tab-bar.tsx"
         }
       ]
+    },
+    {
+      "name": "wheel-picker",
+      "type": "registry:ui",
+      "title": "Wheel Picker (Native)",
+      "description": "Cupertino drum roll wheel picker for Expo and React Native with snap physics.",
+      "registryDependencies": ["tokens"],
+      "files": [
+        {
+          "path": "registry/native/ui/wheel-picker.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/wheel-picker.tsx"
+        }
+      ]
+    },
+    {
+      "name": "numpad",
+      "type": "registry:ui",
+      "title": "Numpad (Native)",
+      "description": "Mobile-first 3x4 numeric keypad for Expo and React Native with semantic theme colors.",
+      "registryDependencies": ["tokens"],
+      "files": [
+        {
+          "path": "registry/native/ui/numpad.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/numpad.tsx"
+        }
+      ]
+    },
+    {
+      "name": "filter-chips",
+      "type": "registry:ui",
+      "title": "Filter Chips (Native)",
+      "description": "Mobile-first horizontal scrollable filter chip row for Expo and React Native.",
+      "registryDependencies": ["tokens"],
+      "files": [
+        {
+          "path": "registry/native/ui/filter-chips.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/filter-chips.tsx"
+        }
+      ]
     }
   ]
 }

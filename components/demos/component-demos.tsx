@@ -121,6 +121,9 @@ import {
   CardTitle,
 } from '@/registry/web/ui/card';
 import { Skeleton } from '@/registry/web/ui/skeleton';
+import { WheelPicker } from '@/registry/web/ui/wheel-picker';
+import { Numpad } from '@/registry/web/ui/numpad';
+import { FilterChips } from '@/registry/web/ui/filter-chips';
 
 export function ButtonDemo() {
   const [saved, setSaved] = React.useState(false);
@@ -973,6 +976,65 @@ export function SkeletonDemo() {
           <Skeleton className="h-3 w-1/2" />
         </div>
       </div>
+    </div>
+  );
+}
+
+export function WheelPickerDemo() {
+  const [val, setVal] = React.useState('30');
+  const items = Array.from({ length: 60 }, (_, i) => ({
+    value: String(i).padStart(2, '0'),
+    label: `${String(i).padStart(2, '0')} min`,
+  }));
+
+  return (
+    <div className="flex flex-col items-center gap-3 py-2">
+      <WheelPicker items={items} value={val} onValueChange={setVal} />
+      <p className="text-xs text-[var(--fort-label-secondary)]">
+        Selected: <span className="font-semibold text-[var(--fort-label)]">{val} min</span>
+      </p>
+    </div>
+  );
+}
+
+export function NumpadDemo() {
+  const [code, setCode] = React.useState('');
+
+  return (
+    <div className="flex flex-col items-center gap-4 py-2">
+      <div className="flex items-center justify-center gap-3 h-10">
+        {Array.from({ length: 4 }).map((_, i) => (
+          <span
+            key={i}
+            className={`size-3.5 rounded-full border transition-all ${
+              i < code.length
+                ? 'bg-[var(--fort-label)] border-[var(--fort-label)]'
+                : 'bg-transparent border-[var(--fort-separator)]'
+            }`}
+          />
+        ))}
+      </div>
+      <Numpad
+        onKeyPress={(k) => setCode((prev) => (prev.length < 4 ? prev + k : prev))}
+        onDelete={() => setCode((prev) => prev.slice(0, -1))}
+      />
+    </div>
+  );
+}
+
+export function FilterChipsDemo() {
+  const [selected, setSelected] = React.useState('all');
+  const items = [
+    { id: 'all', label: 'All Items' },
+    { id: 'recent', label: 'Recently Added' },
+    { id: 'favorites', label: 'Favorites' },
+    { id: 'shared', label: 'Shared with Me' },
+    { id: 'archived', label: 'Archived' },
+  ];
+
+  return (
+    <div className="w-full max-w-md py-2">
+      <FilterChips items={items} value={selected} onValueChange={setSelected} />
     </div>
   );
 }

@@ -219,21 +219,21 @@ export function MobileSettingsScreen() {
 
 ## Component Catalog
 
-### React Web (27 Components: 25 Free + 2 Pro)
+### React Web (30 Components: 28 Free + 2 Pro)
 
 | Category | Components |
 | --- | --- |
-| **Inputs & Actions** | [`Button`](https://fortui.my.id/docs/components/button) · [`Badge`](https://fortui.my.id/docs/components/badge) · [`Checkbox`](https://fortui.my.id/docs/components/checkbox) · [`Input`](https://fortui.my.id/docs/components/input) · [`Textarea`](https://fortui.my.id/docs/components/textarea) · [`Select`](https://fortui.my.id/docs/components/select) · [`Radio Group`](https://fortui.my.id/docs/components/radio-group) · [`OTP Input`](https://fortui.my.id/docs/components/otp-input) · [`Slider`](https://fortui.my.id/docs/components/slider) · [`Switch`](https://fortui.my.id/docs/components/switch) · [`Progress`](https://fortui.my.id/docs/components/progress) · [`Segmented Control`](https://fortui.my.id/docs/components/segmented-control) |
+| **Inputs & Actions** | [`Button`](https://fortui.my.id/docs/components/button) · [`Badge`](https://fortui.my.id/docs/components/badge) · [`Checkbox`](https://fortui.my.id/docs/components/checkbox) · [`Input`](https://fortui.my.id/docs/components/input) · [`Textarea`](https://fortui.my.id/docs/components/textarea) · [`Select`](https://fortui.my.id/docs/components/select) · [`Radio Group`](https://fortui.my.id/docs/components/radio-group) · [`OTP Input`](https://fortui.my.id/docs/components/otp-input) · [`Slider`](https://fortui.my.id/docs/components/slider) · [`Switch`](https://fortui.my.id/docs/components/switch) · [`Progress`](https://fortui.my.id/docs/components/progress) · [`Segmented Control`](https://fortui.my.id/docs/components/segmented-control) · [`Wheel Picker`](https://fortui.my.id/docs/components/wheel-picker) · [`Numpad`](https://fortui.my.id/docs/components/numpad) · [`Filter Chips`](https://fortui.my.id/docs/components/filter-chips) |
 | **Surfaces & Display** | [`Grouped List`](https://fortui.my.id/docs/components/grouped-list) · [`Accordion`](https://fortui.my.id/docs/components/accordion) · [`Card`](https://fortui.my.id/docs/components/card) · [`Avatar`](https://fortui.my.id/docs/components/avatar) · [`Skeleton`](https://fortui.my.id/docs/components/skeleton) |
 | **Navigation & Overlays** | [`Nav Bar`](https://fortui.my.id/docs/components/nav-bar) · [`Tab Bar`](https://fortui.my.id/docs/components/tab-bar) · [`Toast`](https://fortui.my.id/docs/components/toast) · [`Menu`](https://fortui.my.id/docs/components/menu) · [`Popover`](https://fortui.my.id/docs/components/popover) · [`Alert Dialog`](https://fortui.my.id/docs/components/alert-dialog) · [`Sheet`](https://fortui.my.id/docs/components/sheet) · [`Action Sheet`](https://fortui.my.id/docs/components/action-sheet) |
 | **Pro Registry** | [`Activity Pill`](https://fortui.my.id/docs/components/activity-pill) · [`Swipe Row`](https://fortui.my.id/docs/components/swipe-row) |
 
-### Expo / React Native (`tokens` + 14 Components)
+### Expo / React Native (`tokens` + 17 Components)
 
 | Target | Registry Items |
 | --- | --- |
 | **Semantic Tokens** | [`tokens`](https://fortui.my.id/docs/expo) (`light` / `dark` color tokens + `useFortTheme()` + `hairline`) |
-| **Native UI** | `action-sheet` · `alert-dialog` · `avatar` · `badge` · `button` · `card` · `checkbox` · `grouped-list` · `input` · `progress` · `segmented-control` · `sheet` · `switch` · `tab-bar` |
+| **Native UI** | `action-sheet` · `alert-dialog` · `avatar` · `badge` · `button` · `card` · `checkbox` · `filter-chips` · `grouped-list` · `input` · `numpad` · `progress` · `segmented-control` · `sheet` · `switch` · `tab-bar` · `wheel-picker` |
 
 ## Support
 

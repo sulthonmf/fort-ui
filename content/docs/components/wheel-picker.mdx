@@ -1,0 +1,33 @@
+---
+title: Wheel Picker
+description: Cupertino-inspired drum roll wheel picker with snap scrolling and keyboard support.
+---
+
+<ComponentPreview
+  title="Duration Selector"
+  code={`import { WheelPicker } from '@/components/ui/wheel-picker';
+
+export function Example() {
+  const [minutes, setMinutes] = React.useState('30');
+  const items = Array.from({ length: 60 }, (_, i) => ({
+    value: String(i).padStart(2, '0'),
+    label: \`\${String(i).padStart(2, '0')} min\`,
+  }));
+
+  return (
+    <WheelPicker
+      items={items}
+      value={minutes}
+      onValueChange={setMinutes}
+    />
+  );
+}`}
+>
+  <WheelPickerDemo />
+</ComponentPreview>
+
+## Installation
+
+```bash
+npx fort-ui add wheel-picker
+```

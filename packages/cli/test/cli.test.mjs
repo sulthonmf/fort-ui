@@ -72,7 +72,7 @@ test('fort-ui init and add install free web components and tokens idempotently',
 
     const uiDir = path.join(tmpDir, 'src', 'components', 'ui');
     const files = await fs.readdir(uiDir);
-    assert.equal(files.length, 25);
+    assert.equal(files.length, 28);
     assert.ok(files.includes('button.tsx'));
     assert.ok(files.includes('select.tsx'));
     assert.ok(files.includes('otp-input.tsx'));
@@ -224,7 +224,7 @@ test('Pro endpoint protection verifies bearer tokens and authenticates CLI insta
     const freeInstalled = await fs.readdir(
       path.join(freeOnlyDir, 'components', 'ui'),
     );
-    assert.equal(freeInstalled.length, 25);
+    assert.equal(freeInstalled.length, 28);
     assert.ok(!freeInstalled.includes('activity-pill.tsx'));
     assert.ok(!freeInstalled.includes('swipe-row.tsx'));
   } finally {
@@ -312,7 +312,7 @@ test('fort-ui init and add install all Expo / React Native components and tokens
 
     const uiDir = path.join(tmpDir, 'components', 'ui');
     const files = await fs.readdir(uiDir);
-    assert.equal(files.length, 14);
+    assert.equal(files.length, 17);
     for (const expected of [
       'button.tsx',
       'badge.tsx',
@@ -328,6 +328,9 @@ test('fort-ui init and add install all Expo / React Native components and tokens
       'action-sheet.tsx',
       'sheet.tsx',
       'tab-bar.tsx',
+      'wheel-picker.tsx',
+      'numpad.tsx',
+      'filter-chips.tsx',
     ]) {
       assert.ok(files.includes(expected), `Expected ${expected} in native ui dir`);
     }
@@ -362,6 +365,7 @@ test('registry/native TypeScript files typecheck cleanly', async () => {
   export interface ViewProps {
     children?: React.ReactNode;
     style?: StyleProp<ViewStyle>;
+    pointerEvents?: 'box-none' | 'none' | 'box-only' | 'auto';
     onLayout?: (event: LayoutChangeEvent) => void;
     accessibilityRole?: string;
     accessibilityValue?: { min?: number; max?: number; now?: number };
@@ -419,7 +423,16 @@ test('registry/native TypeScript files typecheck cleanly', async () => {
     onError?: (event: NativeSyntheticEvent<ImageErrorEventData>) => void;
     style?: StyleProp<ImageStyle>;
   }
+  export interface ScrollViewProps extends ViewProps {
+    horizontal?: boolean;
+    showsHorizontalScrollIndicator?: boolean;
+    showsVerticalScrollIndicator?: boolean;
+    snapToInterval?: number;
+    decelerationRate?: 'fast' | 'normal' | number;
+    contentContainerStyle?: StyleProp<ViewStyle>;
+  }
   export const View: React.ComponentType<ViewProps>;
+  export const ScrollView: React.ComponentType<ScrollViewProps>;
   export const Text: React.ComponentType<TextProps>;
   export const Pressable: React.ComponentType<PressableProps>;
   export const TextInput: React.ComponentType<TextInputProps>;

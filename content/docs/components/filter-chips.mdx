@@ -1,0 +1,35 @@
+---
+title: Filter Chips
+description: Mobile-first horizontal scrollable filter chip list with single or multi-selection.
+---
+
+<ComponentPreview
+  title="Scrollable Filter Bar"
+  code={`import { FilterChips } from '@/components/ui/filter-chips';
+
+export function Example() {
+  const [filter, setFilter] = React.useState('all');
+  const items = [
+    { id: 'all', label: 'All Items' },
+    { id: 'recent', label: 'Recently Added' },
+    { id: 'favorites', label: 'Favorites' },
+    { id: 'shared', label: 'Shared with Me' },
+  ];
+
+  return (
+    <FilterChips
+      items={items}
+      value={filter}
+      onValueChange={setFilter}
+    />
+  );
+}`}
+>
+  <FilterChipsDemo />
+</ComponentPreview>
+
+## Installation
+
+```bash
+npx fort-ui add filter-chips
+```

@@ -1,0 +1,28 @@
+---
+title: Numpad
+description: Mobile-first 3x4 virtual numeric keypad for passcode and monetary inputs.
+---
+
+<ComponentPreview
+  title="PIN Keypad"
+  code={`import { Numpad } from '@/components/ui/numpad';
+
+export function Example() {
+  const [pin, setPin] = React.useState('');
+
+  return (
+    <Numpad
+      onKeyPress={(digit) => setPin((prev) => (prev.length < 4 ? prev + digit : prev))}
+      onDelete={() => setPin((prev) => prev.slice(0, -1))}
+    />
+  );
+}`}
+>
+  <NumpadDemo />
+</ComponentPreview>
+
+## Installation
+
+```bash
+npx fort-ui add numpad
+```

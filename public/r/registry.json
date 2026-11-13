@@ -385,6 +385,50 @@
           "target": "components/ui/skeleton.tsx"
         }
       ]
+    },
+    {
+      "name": "wheel-picker",
+      "type": "registry:ui",
+      "title": "Wheel Picker",
+      "description": "Cupertino drum roll wheel picker with snap scrolling and keyboard support.",
+      "registryDependencies": ["utils"],
+      "files": [
+        {
+          "path": "registry/web/ui/wheel-picker.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/wheel-picker.tsx"
+        }
+      ]
+    },
+    {
+      "name": "numpad",
+      "type": "registry:ui",
+      "title": "Numpad",
+      "description": "Mobile-first 3x4 virtual numeric keypad for passcode and monetary inputs.",
+      "dependencies": ["lucide-react"],
+      "registryDependencies": ["utils"],
+      "files": [
+        {
+          "path": "registry/web/ui/numpad.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/numpad.tsx"
+        }
+      ]
+    },
+    {
+      "name": "filter-chips",
+      "type": "registry:ui",
+      "title": "Filter Chips",
+      "description": "Mobile-first horizontal scrollable filter chip list with single or multi-selection.",
+      "dependencies": ["lucide-react"],
+      "registryDependencies": ["utils"],
+      "files": [
+        {
+          "path": "registry/web/ui/filter-chips.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/filter-chips.tsx"
+        }
+      ]
     }
   ]
 }

@@ -110,7 +110,7 @@ export function FilterChips({
                 textStyle,
               ]}
             >
-              {active ? '✓ ' : ''}{item.label}
+              {item.label}
             </Text>
           </Pressable>
         );
@@ -137,3 +137,4 @@ const styles = StyleSheet.create({
     fontSize: 13,
   },
 });
+

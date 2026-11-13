@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { ArrowRight, Sparkles } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 import { HomeBento, CommandPill } from '@/components/home-bento';
 import { DonateButton } from '@/components/donate-button';
 import { appName, gitConfig, siteDescription, siteUrl } from '@/lib/shared';
@@ -90,9 +90,9 @@ export default function HomePage() {
         {/* Top Announcement Pill */}
         <Link
           href="/docs/expo"
-          className="group inline-flex items-center gap-2 rounded-full border border-fd-border bg-fd-card px-4 py-1.5 text-xs font-medium text-fd-foreground shadow-xs transition-colors hover:border-fd-foreground/20 hover:bg-fd-accent"
+          className="group inline-flex items-center gap-2 rounded-full border border-fd-border bg-fd-card px-3.5 py-1 text-xs font-medium text-fd-foreground shadow-xs transition-colors hover:border-fd-foreground/20 hover:bg-fd-accent"
         >
-          <Sparkles className="size-3.5 text-[var(--fort-tint-text)]" />
+          <span className="size-1.5 rounded-full bg-[var(--fort-tint)]" />
           <span>v0.1.1 on npm · Web &amp; Expo React Native Ready</span>
           <ArrowRight className="size-3 text-fd-muted-foreground transition-transform group-hover:translate-x-0.5" />
         </Link>

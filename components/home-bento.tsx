@@ -9,11 +9,9 @@ import {
   Moon,
   QrCode,
   SlidersHorizontal,
-  Sparkles,
   Wifi,
 } from 'lucide-react';
 import { Button } from '@/registry/web/ui/button';
-import { Badge } from '@/registry/web/ui/badge';
 import { Checkbox } from '@/registry/web/ui/checkbox';
 import { SearchBar } from '@/registry/web/ui/input';
 import { Slider } from '@/registry/web/ui/slider';
@@ -70,18 +68,13 @@ export function HomeBento() {
         {/* Card 1: Touch Actions & Controls */}
         <div className="flex flex-col justify-between rounded-[24px] border border-[var(--fort-separator)] bg-[var(--fort-surface)] p-5 shadow-sm transition-all duration-200 hover:border-fd-foreground/20">
           <div>
-            <div className="mb-4 flex items-center justify-between">
-              <div>
-                <p className="text-[11px] font-semibold tracking-wider text-[var(--fort-label-secondary)] uppercase">
-                  Tactile Feedback
-                </p>
-                <h3 className="text-[17px] font-bold tracking-tight text-[var(--fort-label)]">
-                  Actions &amp; Buttons
-                </h3>
-              </div>
-              <Badge variant="tinted">
-                Interactive
-              </Badge>
+            <div className="mb-4">
+              <p className="text-[11px] font-semibold tracking-wider text-[var(--fort-label-secondary)] uppercase">
+                Tactile Feedback
+              </p>
+              <h3 className="text-[17px] font-bold tracking-tight text-[var(--fort-label)]">
+                Actions &amp; Buttons
+              </h3>
             </div>
 
             <div className="space-y-3">
@@ -159,18 +152,13 @@ export function HomeBento() {
         {/* Card 2: Cupertino Inset Grouped Settings */}
         <div className="flex flex-col justify-between rounded-[24px] border border-[var(--fort-separator)] bg-[var(--fort-surface)] p-5 shadow-sm transition-all duration-200 hover:border-fd-foreground/20">
           <div>
-            <div className="mb-4 flex items-center justify-between">
-              <div>
-                <p className="text-[11px] font-semibold tracking-wider text-[var(--fort-label-secondary)] uppercase">
-                  Cupertino Surfaces
-                </p>
-                <h3 className="text-[17px] font-bold tracking-tight text-[var(--fort-label)]">
-                  Grouped Settings
-                </h3>
-              </div>
-              <Badge variant="filled">
-                Base UI
-              </Badge>
+            <div className="mb-4">
+              <p className="text-[11px] font-semibold tracking-wider text-[var(--fort-label-secondary)] uppercase">
+                Cupertino Surfaces
+              </p>
+              <h3 className="text-[17px] font-bold tracking-tight text-[var(--fort-label)]">
+                Grouped Settings
+              </h3>
             </div>
 
             <GroupedList footer="Hairline dividers &amp; native touch response.">
@@ -232,18 +220,13 @@ export function HomeBento() {
         {/* Card 3: Passcode & OTP Verification */}
         <div className="flex flex-col justify-between rounded-[24px] border border-[var(--fort-separator)] bg-[var(--fort-surface)] p-5 shadow-sm transition-all duration-200 hover:border-fd-foreground/20">
           <div>
-            <div className="mb-4 flex items-center justify-between">
-              <div>
-                <p className="text-[11px] font-semibold tracking-wider text-[var(--fort-label-secondary)] uppercase">
-                  Mobile Security
-                </p>
-                <h3 className="text-[17px] font-bold tracking-tight text-[var(--fort-label)]">
-                  Passcode &amp; OTP
-                </h3>
-              </div>
-              <Badge variant="neutral">
-                4-Digit
-              </Badge>
+            <div className="mb-4">
+              <p className="text-[11px] font-semibold tracking-wider text-[var(--fort-label-secondary)] uppercase">
+                Mobile Security
+              </p>
+              <h3 className="text-[17px] font-bold tracking-tight text-[var(--fort-label)]">
+                Passcode &amp; OTP
+              </h3>
             </div>
 
             <p className="text-[13px] leading-relaxed text-[var(--fort-label-secondary)] mb-4">
@@ -300,18 +283,13 @@ export function HomeBento() {
         {/* Card 4: Cross-Platform & Accent Tint Switcher */}
         <div className="flex flex-col justify-between rounded-[24px] border border-[var(--fort-separator)] bg-[var(--fort-surface)] p-5 shadow-sm transition-all duration-200 hover:border-fd-foreground/20">
           <div>
-            <div className="mb-4 flex items-center justify-between">
-              <div>
-                <p className="text-[11px] font-semibold tracking-wider text-[var(--fort-label-secondary)] uppercase">
-                  Cross-Platform
-                </p>
-                <h3 className="text-[17px] font-bold tracking-tight text-[var(--fort-label)]">
-                  Shared Tokens &amp; Expo
-                </h3>
-              </div>
-              <Badge variant="tinted">
-                Expo Ready
-              </Badge>
+            <div className="mb-4">
+              <p className="text-[11px] font-semibold tracking-wider text-[var(--fort-label-secondary)] uppercase">
+                Cross-Platform
+              </p>
+              <h3 className="text-[17px] font-bold tracking-tight text-[var(--fort-label)]">
+                Shared Tokens &amp; Expo
+              </h3>
             </div>
 
             <div className="rounded-[16px] border border-[var(--fort-separator)] bg-[var(--fort-bg)] p-3 text-center mb-4">
@@ -327,9 +305,8 @@ export function HomeBento() {
             </div>
 
             <div>
-              <p className="text-[12px] font-medium text-[var(--fort-label)] mb-2 flex items-center gap-1.5">
-                <Sparkles className="size-3.5 text-[var(--fort-tint-text)]" />
-                Live Accent Tint Switcher
+              <p className="text-[12px] font-medium text-[var(--fort-label)] mb-2.5">
+                Live Accent Tint
               </p>
               <div className="grid grid-cols-4 gap-2">
                 {TINT_PRESETS.map((preset) => {
